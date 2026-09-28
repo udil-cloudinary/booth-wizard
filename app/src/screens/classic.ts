@@ -35,7 +35,7 @@ export function classic(go: Go): HTMLElement {
       'label',
       { class: 'card', for: `type-${t}` },
       input,
-      h('img', { src: art(t, p.heroArt), alt: '', width: 68, height: 110 }),
+      h('img', { src: art(t, p.heroArt), alt: '', width: 68, height: 113 }),
       h('span', { class: 'card-text' }, h('span', { class: 'card-title' }, p.label), h('span', { class: 'card-sub' }, p.tagline)),
       h('span', { class: 'check', 'aria-hidden': 'true', html: CHECK_SVG }),
     );

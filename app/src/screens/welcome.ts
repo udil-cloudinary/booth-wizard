@@ -10,7 +10,7 @@ export function welcome(go: Go): HTMLElement {
     h(
       'div',
       { class: 'hero', 'aria-hidden': 'true' },
-      ...PRODUCT_TYPES.map((t) => h('img', { src: art(t, PRODUCTS[t].heroArt), alt: '', width: 110, height: 178, fetchpriority: 'high' })),
+      ...PRODUCT_TYPES.map((t) => h('img', { src: art(t, PRODUCTS[t].heroArt), alt: '', width: 110, height: 183, fetchpriority: 'high' })),
     ),
     h('h1', { tabindex: -1 }, copy.welcome.title),
     h('p', { class: 'lead' }, copy.welcome.body),

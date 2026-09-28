@@ -47,7 +47,7 @@ An unsigned upload cannot update an asset's metadata afterwards, so upload ONCE,
 
 ## Product art
 
-- Copy these from `templates/cloudinary/` into the app, converted to WebP at 2x display size: all 18 `product-base-{type}-{variant}.png` (678 x 1096, transparent).
+- Copy these from `templates/cloudinary/` into the app, converted to WebP at 2x display size: all 18 `product-base-{type}-{variant}.png` (756 x 1257, transparent, whole product).
 - Welcome hero and screen 04 cards: `pizza-own-answer` (margherita slice), `gelato-pistachio`, `caffe-cappuccino`.
 - Screen 05 preview: `product-base-{type}-{variant}`, with `own-answer` while "Write your own" is active.
 - Preload the 6 images of the chosen type as soon as screen 04 is answered.

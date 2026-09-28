@@ -7,7 +7,7 @@ const STICKER = 64;
 
 /** Screen 05 live product preview: the product art plus the kraft label drawn in HTML. */
 export function createPreview() {
-  const img = h('img', { class: 'preview-art', alt: '', width: 170, height: 275 });
+  const img = h('img', { class: 'preview-art', alt: '', width: 170, height: 283 });
   const sticker = h('div', { class: 'sticker', role: 'img', 'aria-label': 'Your selfie' });
   const name = h('div', { class: 'label-name' });
   const fav = h('div', { class: 'label-fav' });
