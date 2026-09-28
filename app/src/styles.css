@@ -23,6 +23,11 @@
   color-scheme: dark;
 }
 
+/* Blue version: the booth backdrop's "Everywhere" blue replaces the yellow accent. */
+:root[data-theme='blue'] {
+  --accent: #5db4f2;
+}
+
 *,
 *::before,
 *::after {

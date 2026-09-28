@@ -1,4 +1,5 @@
 import './styles.css';
+import { config } from './config';
 import { classic } from './screens/classic';
 import { done } from './screens/done';
 import { favourite } from './screens/favourite';
@@ -24,6 +25,21 @@ function guard(step: Step): Step {
   if (!state.publicId) return 'favourite';
   return step;
 }
+
+/** ?theme=blue|yellow picks the accent for this session; otherwise VITE_THEME. */
+function applyTheme() {
+  const KEY = 'booth-wizard-theme';
+  let theme: string = config.theme;
+  try {
+    const q = new URLSearchParams(location.search).get('theme');
+    if (q === 'blue' || q === 'yellow') sessionStorage.setItem(KEY, q);
+    theme = sessionStorage.getItem(KEY) || theme;
+  } catch {
+    /* ignore */
+  }
+  document.documentElement.dataset.theme = theme;
+}
+applyTheme();
 
 const app = document.getElementById('app')!;
 
