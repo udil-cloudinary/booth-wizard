@@ -89,6 +89,7 @@ The app is built: `products/booth-wizard/app/` (README for run and deploy, TESTI
 - Step 02 (changed 2026-09-28): free-text name, no employee list; email = typed prefix + fixed `@cloudinary.com`.
 - Header logo: `logo/cloudinary-everywhere-field-navy-cloud13.png` (the latest Everywhere mark, 2026-09-26), not the plain Cloudinary badge.
 - Pizza art in the app shows the whole slice. FIXED at the source 2026-09-28: all 18 `product-base-*.png` and `figma/product-*.svg` now use a wider canvas (32.0 x 53.2 mm, 756 x 1257 px), so the pizza tip and sleeve are no longer cut anywhere, including the web renditions. The app art is rebuilt from the PNGs for all three products (`scripts/build-art.sh`); `render-pizza.py` is no longer used. The truffle slice's cream layer also no longer pokes above the crust.
+- Selfie orientation (2026-09-28): the app keeps the photo exactly as the phone's camera returns it, no flip. iPhones save the true (un-mirrored) image by default, so it can look reversed compared with the preview; phones with "Mirror Front Camera" on save it mirrored. Accepted as is.
 - Step 03 camera button: "Take a selfie" before the first photo, "Retake" after. Library: "Choose from library".
 - Upload error at step 05: the button turns into "Retry", no extra message. Answers are kept. Timeout 30 s.
 - A photo the phone cannot read at all (e.g. HEIC on Android) shows the normal fail copy ("We could not find a face").
