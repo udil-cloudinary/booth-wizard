@@ -5,10 +5,13 @@ Run on a real iPhone (Safari) and a real Android phone (Chrome), portrait. Use `
 ## Flow
 
 - [ ] 01: hero shows margherita slice, pistachio gelato, cappuccino. Tricolore strip under the header. No privacy footer. Start opens 02.
-- [ ] 02: type part of a first name, then a last name, then without accents ("zoe" finds Zoë Démo). Pick one: email fills. Next enables.
-- [ ] 02: edit the name after picking: Next disables until a list entry is picked again. Free text never passes.
-- [ ] 02: break the email (remove the @): Next disables and the field turns red.
-- [ ] 02: a very long name (Maximiliano Prueba Larguísimo): fits the field; later the label shrinks it on one line.
+- [ ] 02: type a name with extra spaces ("  Maya   Cohen "): stored as "Maya Cohen", label shows MAYA.
+- [ ] 02: `@cloudinary.com` sits fixed after the email field; tapping it focuses the field.
+- [ ] 02: type or paste a full address (`maya.cohen@gmail.com`): only `maya.cohen` stays, sent as `maya.cohen@cloudinary.com`.
+- [ ] 02: invalid prefixes (`.maya`, `maya.`, `ma..ya`, `ma!ya`): field turns red, Next disabled.
+- [ ] 02: Next needs both a name and a valid prefix.
+- [ ] 02: a very long name (40 characters): the field stops at 40; later the label shrinks the first name on one line.
+- [ ] 02: a Hebrew name (אודי לי-הוד): accepted; public ID uses the email prefix (`udi-li-hod-xxxx`).
 - [ ] 03: Take a selfie opens the FRONT camera. Photo shows, then "Face found. Looking great, {first}". Next enables.
 - [ ] 03: no face (point at the ceiling): fail copy, Next stays disabled, Retake works.
 - [ ] 03: Choose from library: a portrait from the gallery works, including an iPhone HEIC and a rotated photo (shows upright).

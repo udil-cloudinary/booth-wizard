@@ -1,5 +1,4 @@
 import './styles.css';
-import { loadEmployees } from './employees';
 import { classic } from './screens/classic';
 import { done } from './screens/done';
 import { favourite } from './screens/favourite';
@@ -38,5 +37,4 @@ const go: Go = (target) => {
   (el.querySelector('h1') as HTMLElement | null)?.focus({ preventScroll: true });
 };
 
-loadEmployees();
 go(state.step);

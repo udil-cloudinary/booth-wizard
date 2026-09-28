@@ -26,7 +26,7 @@ Do not use anything in `products/mobile-app/`: that is a different, native produ
 Six screens as in WIZARD-CONTENT.md: 01 Welcome, 02 Who are you, 03 Strike a pose (selfie), 04 Pick your Italian classic, 05 Favourite, 06 Done. One page, a small state machine, a 4-segment progress bar on screens 02 to 05, Back on every step except 01 and 06. Keep state in memory and in `sessionStorage` so a reload mid-wizard does not lose it. After Done, a "Start over" link clears everything (for a shared booth phone).
 
 Screen rules that matter:
-- 02: the name is a searchable picker over the bundled employee list (type-ahead, accents ignored, first or last name). Picking a name fills the email from the list; email stays editable and must be valid. No free-text names.
+- 02: the name is free text (trimmed, max 40). The email field takes only the part before the @; `@cloudinary.com` is fixed and shown next to it. (Changed 2026-09-28: the employee list was dropped.)
 - 03: camera via `<input type="file" accept="image/*" capture="user">`, plus "Choose from library". Show the photo, then run a face check in the browser (see "Face check"). Next is disabled until a face is found. Retake always available.
 - 04: three cards, nothing preselected, one required.
 - 05: question and 5 chips per type (exact order from the doc) plus "Write your own" (max 18 chars, trimmed, no word filter). Next ("Make my product") disabled until an answer exists. After the first tap, show the live product preview card (see "Label preview"); it swaps art on every tap.
@@ -72,10 +72,10 @@ Match the "Wizard v2 · two stations" boards:
 - Header: Cloudinary Everywhere badge (`logo/cloudinary-everywhere-badge-mirrored.png`) + "Cloudinary *Everywhere*". Welcome has a green, white and red tricolore strip under the header.
 - Touch targets at least 44 px, real `<button>` and `<label>` elements, text contrast 4.5:1, respects `prefers-reduced-motion`. No emoji.
 
-## Employee list
+## Name and email
 
-- Load from `app/public/employees.json`: `[{"name": "Maya Cohen", "email": "maya.cohen@cloudinary.com"}]`. Create it with 10 obviously fake sample entries and a README note that the real list replaces it before the event.
-- `first_name` = the first word of `name`, unless the list gives a `first` field.
+- No employee list (dropped 2026-09-28). `first_name` = the first word of the typed name.
+- `email` = the typed prefix + `@cloudinary.com`.
 
 ## Done means
 

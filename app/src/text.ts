@@ -21,9 +21,35 @@ export function randomSuffix(len = 4): string {
   return Array.from(bytes, (b) => chars[b % chars.length]).join('');
 }
 
-/** public_id = {first}-{last}-{4 random a-z0-9}, from the full name as listed. */
-export function publicIdFor(fullName: string): string {
-  return `${slug(fullName) || 'visitor'}-${randomSuffix()}`;
+/**
+ * public_id = {first}-{last}-{4 random a-z0-9}, from the typed full name.
+ * A name with no Latin letters (e.g. Hebrew) falls back to the email prefix.
+ */
+export function publicIdFor(fullName: string, emailPrefix = ''): string {
+  return `${slug(fullName) || slug(emailPrefix.replace(/[._+]/g, ' ')) || 'visitor'}-${randomSuffix()}`;
+}
+
+/** Trim and collapse inner whitespace. */
+export function cleanName(s: string): string {
+  return s.trim().replace(/\s+/g, ' ');
+}
+
+/** First word of the name: what the label prints. */
+export function firstNameOf(fullName: string): string {
+  return cleanName(fullName).split(' ')[0] || '';
+}
+
+/**
+ * The part before @ of a company address. Pasting a full address keeps only
+ * the prefix; spaces are dropped; lower case.
+ */
+export function normalizeEmailPrefix(s: string): string {
+  return s.split('@')[0].replace(/\s+/g, '').toLowerCase();
+}
+
+/** Letters, digits and . _ + -, not starting or ending with a dot, no "..". */
+export function isValidEmailPrefix(p: string): boolean {
+  return /^[a-z0-9_+-](?:[a-z0-9._+-]*[a-z0-9_+-])?$/.test(p) && !p.includes('..') && p.length <= 64;
 }
 
 /**
@@ -46,8 +72,4 @@ export function toMetaString(fields: Record<string, string>): string {
   return Object.entries(fields)
     .map(([k, v]) => `${k}=${escapeMetaValue(v)}`)
     .join('|');
-}
-
-export function isValidEmail(s: string): boolean {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(s.trim());
 }

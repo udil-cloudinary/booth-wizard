@@ -36,19 +36,13 @@ npm run build      # -> dist/, deploy as is
 npm run preview    # serve dist/ locally
 ```
 
-First load is about 45 KB of app (HTML, CSS, JS, badge, 3 hero images, employee list) plus Google Fonts. The face check (MediaPipe runtime, ~11 MB wasm, compresses to a few MB) loads only when screen 03 opens; if it has not loaded in 8 s, the visitor can continue and Cloudinary's `faces` check is the backstop.
+First load is about 45 KB of app (HTML, CSS, JS, badge, 3 hero images) plus Google Fonts. The face check (MediaPipe runtime, ~11 MB wasm, compresses to a few MB) loads only when screen 03 opens; if it has not loaded in 8 s, the visitor can continue and Cloudinary's `faces` check is the backstop.
 
 `dist/` uses relative paths, so it works at a domain root or a sub-path.
 
-## Employee list
+## Name and email
 
-`public/employees.json` ships with 10 obviously fake entries. **Replace it with the real list before the event.** Format:
-
-```json
-[{ "name": "Maya Cohen", "email": "maya.cohen@cloudinary.com" }]
-```
-
-Optional `"first"` overrides the first name (default: the first word of `name`). No rebuild needed: swap the file in the deployed `dist/` (it is fetched with `no-cache`).
+The name is free text; the first word goes on the label. The email field takes only the part before the @; the domain is fixed to `@cloudinary.com` (`emailDomain` in `src/config.ts`).
 
 ## Product art
 
@@ -66,7 +60,7 @@ All three serve `dist/` as static files over HTTPS on a CDN. Point the short QR 
 **AWS (S3 + CloudFront)**
 - `npm run build`, then `aws s3 sync dist/ s3://<bucket>/ --delete`.
 - CloudFront distribution with the bucket as origin (Origin Access Control), default root object `index.html`, compression on, an ACM certificate for the custom domain.
-- Cache: long TTL for `assets/*` (hashed names), short for `index.html` and `employees.json`. After a deploy: `aws cloudfront create-invalidation --distribution-id <id> --paths /index.html /employees.json`.
+- Cache: long TTL for `assets/*` (hashed names), short for `index.html`. After a deploy: `aws cloudfront create-invalidation --distribution-id <id> --paths /index.html`.
 - Amplify Hosting is the simpler alternative: connect the repo, app root `products/booth-wizard/app`, build `npm run build`, artifacts `dist`, and set the env variables in the console.
 
 **Vercel**
@@ -82,7 +76,6 @@ All three serve `dist/` as static files over HTTPS on a CDN. Point the short QR 
 | `src/cloudinary.ts` | The only Cloudinary call: unsigned upload, progress, 30 s timeout, metadata/context switch, mock |
 | `src/face.ts` | Lazy MediaPipe face detector |
 | `src/image.ts` | Downscale to 1600 px JPEG 0.85, sticker crop |
-| `src/text.ts` | Accent folding, slugs, `variant`, public ID, metadata escaping |
-| `src/employees.ts` | Employee list and type-ahead search |
+| `src/text.ts` | Accent folding, slugs, `variant`, public ID, name cleanup, email prefix rules, metadata escaping |
 | `src/labelPreview.ts` | Screen 05 kraft label preview |
 | `src/screens/*` | One file per screen |

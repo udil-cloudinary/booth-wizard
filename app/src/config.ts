@@ -9,6 +9,8 @@ export const config = {
   faceModelUrl:
     (env.VITE_FACE_MODEL_URL as string) ||
     'https://storage.googleapis.com/mediapipe-models/face_detector/blaze_face_short_range/float16/1/blaze_face_short_range.tflite',
+  // Fixed email domain: visitors only type the part before the @.
+  emailDomain: 'cloudinary.com',
   faceModelTimeoutMs: 8000,
   uploadTimeoutMs: 30000,
 };

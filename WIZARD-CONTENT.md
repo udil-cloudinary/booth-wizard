@@ -8,7 +8,7 @@ Replaces the Act 1 wizard (topic: food / place / football team). Serves both sta
 | # | Screen | Copy | Rules |
 |---|--------|------|-------|
 | 01 | Welcome | "Ciao! Become an Italian classic." / "Take a selfie and pick your flavour. Then head to a station and make it real, with an AI agent or right inside the tools you already use." Chips: 60 seconds, magnet + keychain. No privacy or consent footer (Udi 2026-09-27: not needed). CTA: Start | |
-| 02 | Who are you? | "Your first name goes on your product label." NAME: employee list picker. Helper: "Pick yourself from the employee list. Remember it, you will type it at the station." EMAIL: auto-filled, editable. CTA: Next | Name must come from the list (full name, exact spelling). Email must be valid. |
+| 02 | Who are you? | "Your first name goes on your product label." NAME: free text. Helper: "Use the name you go by. Remember it, you will type it at the station." EMAIL: the visitor types only the part before the @, `@cloudinary.com` is fixed next to the field. CTA: Next | Name: any text, trimmed, max 40 characters; first name = first word. Email prefix: letters, digits and `. _ + -`, no leading/trailing dot, no "..". Pasting a full address keeps only the prefix. (Changed 2026-09-28: no employee list.) |
 | 03 | Strike a pose | "This face is about to be famous." Success: "Face found. Looking great, {first}". Fail: "We could not find a face" / "Face the camera, find some light, and keep sunglasses off for a second." CTAs: Retake, Next | Next disabled until a face is found (checked in the browser, see "Upload and auth"). Library upload allowed. |
 | 04 | Pick your Italian classic | "It becomes your product, with your face on the label." Cards: Pizza "Wood-fired, obviously" / Gelato "One scoop is never enough" / Caffè "Standing at the bar, like a local". CTA: Next | One required. Nothing preselected. Card art: see "Product art in the app" below. |
 | 05 | Favourite (per type) | Helper for all: "One tap, or write your own." Live product preview card (appears after the first tap): the product art for the tapped answer + "YOUR PRODUCT / {FIRST} / {answer}" + "Your selfie goes in the sticker." CTA: Make my product | Next disabled until a chip or own answer. Preview swaps art on every tap. |
@@ -53,7 +53,7 @@ No visitor login and NO backend for the wizard. UNSIGNED upload (decided 2026-09
 1. On the booth cloud, create ONE unsigned upload preset (e.g. `booth_wizard`). The preset, not the phone, fixes everything that matters: asset folder `booth/visitors/`, tag `booth-visitor`, `faces: true`, the eager renditions (async), allowed formats jpg/png/heic/webp, a max file size (e.g. 10 MB), `unique_filename`, no overwrite.
 2. The phone posts the selfie straight to `https://api.cloudinary.com/v1_1/<booth-cloud>/image/upload` with `upload_preset`, `public_id`, the `type-{pizza|gelato|caffe}` tag, and the structured `metadata` (fields below). Only the cloud name and the preset name live in the app, no API key or secret.
 3. ONE upload per attempt, at "Make my product" on step 05, with every metadata field filled: an unsigned upload cannot edit metadata afterwards. So the step 03 face check runs in the browser (e.g. MediaPipe Face Detector), and Cloudinary's `faces` in the upload response is the backstop: if it is empty, send the visitor back to step 03 with the fail copy; the retake is a new upload and the latest per email wins.
-4. The employee list check happens in the app: the name picker only offers names from the list bundled with the app.
+4. No employee list (dropped 2026-09-28): the name is free text. The fixed `@cloudinary.com` domain keeps every email a company address.
 
 What this trades away, and how we cover it:
 - Anyone who finds the cloud name + preset name could upload. Cover: formats and size limited by the preset, nothing is published without the staff Print tap and the TV Hide button, and the preset is DISABLED right after the gathering, then `booth/visitors/` is deleted.
@@ -62,17 +62,17 @@ What this trades away, and how we cover it:
 
 ## Hosting and deployment
 
-The wizard is a static site (HTML, CSS, JS and the bundled art and employee list), with no server code, so it deploys anywhere. Cloudinary picks one of: **Cloudflare** (Pages), **AWS** (S3 + CloudFront, or Amplify Hosting) or **Vercel**. Requirements whichever is chosen:
+The wizard is a static site (HTML, CSS, JS and the bundled art), with no server code, so it deploys anywhere. Cloudinary picks one of: **Cloudflare** (Pages), **AWS** (S3 + CloudFront, or Amplify Hosting) or **Vercel**. Requirements whichever is chosen:
 - HTTPS (the phone camera only opens on HTTPS) on a short URL for the QR code, e.g. `everywhere.cloudinary.com`.
 - Fast on phone networks: CDN-cached, art as optimized web images.
 - The TV, operator page and print queue go on the same provider (their small backend runs as that provider's functions: Cloudflare Workers, AWS Lambda or Vercel Functions).
 
 ## Asset contract (what the stations, the TV and the print agent read)
 
-- Folder: `booth/visitors/`. Public ID: `{first}-{last}-{4 random chars}`.
+- Folder: `booth/visitors/`. Public ID: `{first}-{last}-{4 random chars}` from the typed name; a name with no Latin letters (e.g. Hebrew) uses the email prefix instead.
 - Tags: `booth-visitor`, `type-{pizza|gelato|caffe}`.
-- Structured metadata: `visitor_name` (full, as in list), `first_name`, `email`, `product_type`, `variant`, `favorite`, `face_detected` (bool), `tv_status` (auto, hidden), `print_status` (none, printed).
-  - Visitor fields: `visitor_name` (text, full name exactly as in the employee list: the Agent station finds the visitor by it), `first_name` (text, what the label prints in caps), `email` (text, where the Part 2 email on the TV and any follow-up goes; also the key for "latest upload wins").
+- Structured metadata: `visitor_name` (full, as typed), `first_name`, `email`, `product_type`, `variant`, `favorite`, `face_detected` (bool), `tv_status` (auto, hidden), `print_status` (none, printed).
+  - Visitor fields: `visitor_name` (text, full name exactly as the visitor typed it: the Agent station finds the visitor by it, so the helper asks them to remember it; email is the safer lookup key), `first_name` (text, what the label prints in caps), `email` (text, where the Part 2 email on the TV and any follow-up goes; also the key for "latest upload wins").
   - `product_type`: single-select, `pizza` | `gelato` | `caffe`.
   - `variant`: single-select, which ART to use. The chip slugs (pizza `burrata`, `truffle`, `pineapple`, `olives`, `artichoke`; gelato `pistachio`, `stracciatella`, `nocciola`, `limone`, `tiramisu`; caffe `espresso`, `cappuccino`, `macchiato`, `affogato`, `ristretto`) plus `own-answer`. Optional: a Cloudinary conditional metadata rule so each product type only offers its own variants.
   - `favorite`: free text, what the LABEL prints, exactly as the visitor picked or typed it (e.g. `Artichoke`, `Nonna's Fig`).
@@ -86,6 +86,7 @@ The wizard is a static site (HTML, CSS, JS and the bundled art and employee list
 
 The app is built: `products/booth-wizard/app/` (README for run and deploy, TESTING.md for the manual test list and the first-run check).
 
+- Step 02 (changed 2026-09-28): free-text name, no employee list; email = typed prefix + fixed `@cloudinary.com`.
 - Step 03 camera button: "Take a selfie" before the first photo, "Retake" after. Library: "Choose from library".
 - Upload error at step 05: the button turns into "Retry", no extra message. Answers are kept. Timeout 30 s.
 - A photo the phone cannot read at all (e.g. HEIC on Android) shows the normal fail copy ("We could not find a face").

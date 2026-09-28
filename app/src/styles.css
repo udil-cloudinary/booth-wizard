@@ -357,14 +357,6 @@ h1 {
   border-color: var(--accent);
 }
 
-.field.picked {
-  border-color: var(--accent);
-}
-
-.field[aria-invalid='true'] {
-  border-color: var(--fail);
-}
-
 .help {
   margin: 8px 0 0;
   color: var(--muted);
@@ -374,38 +366,39 @@ h1 {
   line-height: 1.4;
 }
 
-.combo {
-  position: relative;
-}
-
-.picker {
-  position: absolute;
-  z-index: 5;
-  left: 0;
-  right: 0;
-  top: calc(100% + 6px);
-  margin: 0;
-  padding: 6px;
-  list-style: none;
-  border-radius: 14px;
-  background: var(--surface-on);
-  border: 1.5px solid var(--line);
-  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.45);
-}
-
-.picker li {
+/* Email: typed prefix + fixed domain, styled as one field. */
+.email-field {
   display: flex;
   align-items: center;
-  min-height: 46px;
-  padding: 0 12px;
-  border-radius: 10px;
-  font-size: 16px;
-  cursor: pointer;
+  height: 52px;
+  border-radius: 14px;
+  border: 1.5px solid var(--line);
+  background: var(--surface);
+  cursor: text;
 }
 
-.picker li.active {
-  background: var(--surface);
-  outline: 1.5px solid var(--accent);
+.email-field:focus-within {
+  border-color: var(--accent);
+}
+
+.email-field.invalid {
+  border-color: var(--fail);
+}
+
+.email-field .email-prefix {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  padding-right: 2px;
+  border: 0;
+  background: none;
+}
+
+.email-domain {
+  flex: none;
+  padding-right: 16px;
+  color: var(--text-2);
+  font-size: 17px;
 }
 
 /* ---------- 03 Pose ---------- */

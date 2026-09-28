@@ -19,7 +19,7 @@ export const copy = {
     title: 'Who are you?',
     body: 'Your first name goes on your product label.',
     nameLabel: 'Name',
-    nameHelper: 'Pick yourself from the employee list. Remember it, you will type it at the station.',
+    nameHelper: 'Use the name you go by. Remember it, you will type it at the station.',
     emailLabel: 'Email',
     cta: 'Next',
   },

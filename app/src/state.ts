@@ -15,9 +15,10 @@ export type FaceStatus = 'idle' | 'checking' | 'found' | 'none' | 'unavailable';
 
 export interface State {
   step: Step;
-  name: string; // full name, exactly as in the employee list
+  name: string; // full name as the visitor typed it (trimmed, single spaces)
   first: string;
-  email: string;
+  emailPrefix: string; // what the visitor typed before the fixed @domain
+  email: string; // full address, empty until the prefix is valid
   photo: string; // data URL, already downscaled JPEG
   photoW: number;
   photoH: number;
@@ -36,6 +37,7 @@ const initial = (): State => ({
   step: 'welcome',
   name: '',
   first: '',
+  emailPrefix: '',
   email: '',
   photo: '',
   photoW: 0,

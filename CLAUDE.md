@@ -5,7 +5,7 @@ You are building the booth's mobile WEB app: a short wizard a visitor opens on t
 ## What it is
 
 - A mobile web app (opened from a QR code in the phone browser). No native app, no App Store, no TestFlight, no login.
-- 6 screens, about 60 seconds: Welcome, Who are you (name from the employee list + email), Selfie with face check, Pick your Italian classic (pizza, gelato, caffè), Favourite (5 chips or write your own), Done.
+- 6 screens, about 60 seconds: Welcome, Who are you (free-text name + email prefix, `@cloudinary.com` fixed), Selfie with face check, Pick your Italian classic (pizza, gelato, caffè), Favourite (5 chips or write your own), Done.
 - It does one thing: put the visitor's selfie + answers into the booth Cloudinary cloud (UNSIGNED upload with an upload preset, like our demo clouds: no backend, no API secret in the app; structured metadata). Both stations (Agent and Everywhere), the TV and the magnet print all read from there.
 - A static site with no server code. Hosting: Cloudflare, AWS or Vercel (Cloudinary picks), HTTPS required for the camera. See "Hosting and deployment" in `WIZARD-CONTENT.md`.
 

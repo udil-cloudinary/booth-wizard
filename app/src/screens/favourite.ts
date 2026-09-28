@@ -87,7 +87,7 @@ export function favourite(go: Go): HTMLElement {
     nextLabel.textContent = copy.favourite.cta;
     setProgress(0);
     render();
-    const publicId = publicIdFor(state.name);
+    const publicId = publicIdFor(state.name, state.emailPrefix);
     try {
       const res = await uploadVisitor(
         {

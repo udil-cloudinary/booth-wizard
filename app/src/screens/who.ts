@@ -1,117 +1,75 @@
+import { config } from '../config';
 import { copy } from '../content';
-import { type Employee, firstNameOf, loadEmployees, search } from '../employees';
 import { state, update } from '../state';
-import { isValidEmail } from '../text';
+import { cleanName, firstNameOf, isValidEmailPrefix, normalizeEmailPrefix } from '../text';
 import { h, primary, stepChrome } from '../ui';
 import type { Go } from './types';
 
-export function who(go: Go): HTMLElement {
-  let list: Employee[] = [];
-  let active = -1;
-  let results: Employee[] = [];
+const NAME_MAX = 40;
 
+export function who(go: Go): HTMLElement {
   const nameInput = h('input', {
     id: 'name',
     type: 'text',
     class: 'field',
-    autocomplete: 'off',
+    maxlength: NAME_MAX,
+    autocomplete: 'name',
     autocapitalize: 'words',
     spellcheck: 'false',
-    role: 'combobox',
-    'aria-autocomplete': 'list',
-    'aria-expanded': 'false',
-    'aria-controls': 'name-list',
+    enterkeyhint: 'next',
     'aria-describedby': 'name-help',
   });
   nameInput.value = state.name;
-  const listbox = h('ul', { id: 'name-list', class: 'picker', role: 'listbox', hidden: true });
+
+  // Only the part before the @ is typed; the company domain is fixed.
   const emailInput = h('input', {
     id: 'email',
-    type: 'email',
-    class: 'field',
+    type: 'text',
+    class: 'field email-prefix',
     autocomplete: 'off',
     autocapitalize: 'off',
+    autocorrect: 'off',
     spellcheck: 'false',
     inputmode: 'email',
+    enterkeyhint: 'done',
+    'aria-describedby': 'email-domain',
   });
-  emailInput.value = state.email;
+  emailInput.value = state.emailPrefix;
   const next = primary(copy.who.cta, () => go('pose'));
 
+  const emailField = h(
+    'div',
+    { class: 'email-field', onclick: (() => emailInput.focus()) as EventListener },
+    emailInput,
+    h('span', { id: 'email-domain', class: 'email-domain' }, `@${config.emailDomain}`),
+  );
+
   const refresh = () => {
-    const ok = !!state.name && list.some((e) => e.name === state.name) && isValidEmail(state.email);
-    next.disabled = !ok;
-    nameInput.classList.toggle('picked', !!state.name);
-    emailInput.setAttribute('aria-invalid', String(!!emailInput.value && !isValidEmail(emailInput.value)));
-  };
-
-  const close = () => {
-    listbox.hidden = true;
-    nameInput.setAttribute('aria-expanded', 'false');
-    nameInput.removeAttribute('aria-activedescendant');
-    active = -1;
-  };
-
-  const pick = (e: Employee) => {
-    update({ name: e.name, first: firstNameOf(e), email: e.email });
-    nameInput.value = e.name;
-    emailInput.value = e.email;
-    close();
-    refresh();
-  };
-
-  const renderList = () => {
-    listbox.replaceChildren(
-      ...results.map((e, i) =>
-        h(
-          'li',
-          {
-            id: `name-opt-${i}`,
-            role: 'option',
-            class: i === active ? 'active' : '',
-            'aria-selected': String(i === active),
-            onpointerdown: ((ev: Event) => ev.preventDefault()) as EventListener,
-            onclick: (() => pick(e)) as EventListener,
-          },
-          e.name,
-        ),
-      ),
-    );
-    const open = results.length > 0;
-    listbox.hidden = !open;
-    nameInput.setAttribute('aria-expanded', String(open));
-    if (active >= 0) nameInput.setAttribute('aria-activedescendant', `name-opt-${active}`);
+    next.disabled = !(state.name && state.first && state.email);
+    const p = emailInput.value;
+    emailField.classList.toggle('invalid', !!p && !isValidEmailPrefix(p));
   };
 
   nameInput.addEventListener('input', () => {
-    // Free text is never a name: typing clears the pick until a list entry is chosen.
-    if (state.name && nameInput.value !== state.name) update({ name: '', first: '' });
-    results = search(list, nameInput.value);
-    active = results.length ? 0 : -1;
-    renderList();
+    const name = cleanName(nameInput.value);
+    update({ name, first: firstNameOf(name) });
     refresh();
   });
-  nameInput.addEventListener('keydown', (ev) => {
-    if (listbox.hidden) return;
-    if (ev.key === 'ArrowDown' || ev.key === 'ArrowUp') {
-      ev.preventDefault();
-      const d = ev.key === 'ArrowDown' ? 1 : -1;
-      active = (active + d + results.length) % results.length;
-      renderList();
-    } else if (ev.key === 'Enter' && active >= 0) {
-      ev.preventDefault();
-      pick(results[active]);
-    } else if (ev.key === 'Escape') close();
-  });
-  nameInput.addEventListener('blur', () => setTimeout(close, 150));
-  emailInput.addEventListener('input', () => {
-    update({ email: emailInput.value.trim() });
-    refresh();
+  nameInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') emailInput.focus();
   });
 
-  loadEmployees().then((l) => {
-    list = l;
+  emailInput.addEventListener('input', () => {
+    // A pasted full address keeps only the prefix.
+    const prefix = normalizeEmailPrefix(emailInput.value);
+    if (prefix !== emailInput.value) emailInput.value = prefix;
+    update({ emailPrefix: prefix, email: isValidEmailPrefix(prefix) ? `${prefix}@${config.emailDomain}` : '' });
     refresh();
   });
+  emailInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') emailInput.blur();
+  });
+
   refresh();
 
   return h(
@@ -124,10 +82,10 @@ export function who(go: Go): HTMLElement {
       'div',
       { class: 'form-row' },
       h('label', { for: 'name' }, copy.who.nameLabel),
-      h('div', { class: 'combo' }, nameInput, listbox),
+      nameInput,
       h('p', { id: 'name-help', class: 'help' }, copy.who.nameHelper),
     ),
-    h('div', { class: 'form-row' }, h('label', { for: 'email' }, copy.who.emailLabel), emailInput),
+    h('div', { class: 'form-row' }, h('label', { for: 'email' }, copy.who.emailLabel), emailField),
     h('div', { class: 'actions' }, next),
   );
 }
