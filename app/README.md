@@ -46,7 +46,7 @@ The name is free text; the first word goes on the label. The email field takes o
 
 ## Product art
 
-`public/art/` holds WebP copies (360 px wide, 2x display size) of the 18 `templates/cloudinary/product-base-*.png` files (756 x 1257, whole product) and the header logo (`logo/cloudinary-everywhere-field-navy-cloud13.png`). Regenerate after art changes with `npm run art` (needs `cwebp` (`brew install webp`) and the full Cloudinary Everywhere project next to this folder).
+`src/art/` holds WebP copies (bundled by Vite with hashed file names, so an update never shows a stale cached image) (360 px wide, 2x display size) of the 18 `templates/cloudinary/product-base-*.png` files (756 x 1257, whole product) and the header logo (`logo/cloudinary-everywhere-field-navy-cloud13.png`). Regenerate after art changes with `npm run art` (needs `cwebp` (`brew install webp`) and the full Cloudinary Everywhere project next to this folder).
 
 ## Deploy
 

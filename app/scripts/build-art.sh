@@ -6,7 +6,7 @@
 set -e
 cd "$(dirname "$0")/.."
 ROOT=../../..
-OUT=public/art
+OUT=src/art
 mkdir -p "$OUT"
 for f in "$ROOT"/templates/cloudinary/product-base-*.png; do
   name=$(basename "$f" .png)

@@ -18,7 +18,11 @@ export function h<K extends keyof HTMLElementTagNameMap>(tag: K, attrs: Attrs = 
   return el;
 }
 
-export const art = (type: string, variant: string) => `art/product-base-${type}-${variant}.webp`;
+// Bundled by Vite with a content hash in the file name, so an updated image
+// always gets a new URL and phones never show a stale cached copy.
+const ART = import.meta.glob<string>('./art/*.webp', { eager: true, query: '?url', import: 'default' });
+export const badgeUrl = ART['./art/badge.webp'];
+export const art = (type: string, variant: string) => ART[`./art/product-base-${type}-${variant}.webp`];
 
 export function header(opts: { tricolore?: boolean } = {}): HTMLElement {
   return h(
@@ -27,7 +31,7 @@ export function header(opts: { tricolore?: boolean } = {}): HTMLElement {
     h(
       'div',
       { class: 'brand' },
-      h('img', { src: 'art/badge.webp', alt: '', width: 36, height: 36 }),
+      h('img', { src: badgeUrl, alt: '', width: 36, height: 36 }),
       h('span', {}, copy.brand + ' ', h('em', {}, copy.brandAccent)),
     ),
     opts.tricolore ? h('div', { class: 'tricolore', 'aria-hidden': 'true' }, h('i'), h('i'), h('i')) : null,
