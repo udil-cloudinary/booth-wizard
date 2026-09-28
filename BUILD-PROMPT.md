@@ -69,7 +69,7 @@ Match the "Wizard v2 · two stations" boards:
 - Chips: 46 px, radius 23, `#1B2148` with a `#3a4275` border; selected = yellow border. "Write your own" = dashed yellow.
 - Cards: `#1B2148`, border `#3a4275`, radius 16; selected `#252c5c` with a 2 px yellow border and a yellow check.
 - Fonts (Google Fonts): Space Grotesk 500/600/700 for headings and UI, Inter for small text, Playfair Display only in the label preview.
-- Header: Cloudinary Everywhere badge (`logo/cloudinary-everywhere-badge-mirrored.png`) + "Cloudinary *Everywhere*". Welcome has a green, white and red tricolore strip under the header.
+- Header: Cloudinary Everywhere logo (`logo/cloudinary-everywhere-field-navy-cloud13.png`, the latest mark) + "Cloudinary *Everywhere*". Welcome has a green, white and red tricolore strip under the header.
 - Touch targets at least 44 px, real `<button>` and `<label>` elements, text contrast 4.5:1, respects `prefers-reduced-motion`. No emoji.
 
 ## Name and email
