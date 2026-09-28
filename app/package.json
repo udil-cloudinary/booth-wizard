@@ -1,0 +1,23 @@
+{
+  "name": "booth-wizard",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host",
+    "dev:mock": "VITE_MOCK_UPLOAD=true vite --host",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --host",
+    "art": "sh scripts/build-art.sh",
+    "postinstall": "node scripts/copy-mediapipe.mjs",
+    "fetch-model": "curl -fL -o public/mediapipe/blaze_face_short_range.tflite https://storage.googleapis.com/mediapipe-models/face_detector/blaze_face_short_range/float16/1/blaze_face_short_range.tflite"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-basic-ssl": "^2.3.0",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.1"
+  },
+  "dependencies": {
+    "@mediapipe/tasks-vision": "^1.0.1"
+  }
+}

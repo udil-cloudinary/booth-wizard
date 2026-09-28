@@ -1,0 +1,12 @@
+[
+  { "name": "Maya Sample", "email": "maya.sample@example.com" },
+  { "name": "Jonas Placeholder", "email": "jonas.placeholder@example.com" },
+  { "name": "Zoë Démo", "email": "zoe.demo@example.com" },
+  { "name": "Maximiliano Prueba Larguísimo", "email": "maximiliano.prueba@example.com" },
+  { "name": "Élodie Exemple", "email": "elodie.exemple@example.com" },
+  { "name": "Luca Finto", "email": "luca.finto@example.com" },
+  { "name": "Noa Dummy", "email": "noa.dummy@example.com" },
+  { "name": "Priya Mockwell", "email": "priya.mockwell@example.com" },
+  { "name": "María José Fixture", "first": "María José", "email": "maria.jose.fixture@example.com" },
+  { "name": "Sven O'Testson", "email": "sven.otestson@example.com" }
+]
