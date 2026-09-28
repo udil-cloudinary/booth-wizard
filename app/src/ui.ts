@@ -27,7 +27,7 @@ export function header(opts: { tricolore?: boolean } = {}): HTMLElement {
     h(
       'div',
       { class: 'brand' },
-      h('img', { src: 'art/badge.webp', alt: '', width: 32, height: 32 }),
+      h('img', { src: 'art/badge.webp', alt: '', width: 36, height: 36 }),
       h('span', {}, copy.brand + ' ', h('em', {}, copy.brandAccent)),
     ),
     opts.tricolore ? h('div', { class: 'tricolore', 'aria-hidden': 'true' }, h('i'), h('i'), h('i')) : null,

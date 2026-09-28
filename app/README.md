@@ -46,7 +46,7 @@ The name is free text; the first word goes on the label. The email field takes o
 
 ## Product art
 
-`public/art/` holds WebP copies (340 px wide, 2x display size) of the 18 `templates/cloudinary/product-base-*.png` files and the header badge. Regenerate after art changes with `npm run art` (needs `cwebp`: `brew install webp`).
+`public/art/` holds WebP copies (340 px wide, 2x display size) of the product art and the header logo (`logo/cloudinary-everywhere-field-navy-cloud13.png`). Gelato and caffè come from `templates/cloudinary/product-base-*.png`. Pizza is rendered from `templates/figma/product-pizza-*.svg` by `scripts/render-pizza.py`, because the print slot crops the tip of the slice; the web version shows the whole slice. Regenerate after art changes with `npm run art` (needs `cwebp` (`brew install webp`), Google Chrome, and the full Cloudinary Everywhere project next to this folder).
 
 ## Deploy
 

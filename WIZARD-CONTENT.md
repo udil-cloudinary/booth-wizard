@@ -87,6 +87,8 @@ The wizard is a static site (HTML, CSS, JS and the bundled art), with no server 
 The app is built: `products/booth-wizard/app/` (README for run and deploy, TESTING.md for the manual test list and the first-run check).
 
 - Step 02 (changed 2026-09-28): free-text name, no employee list; email = typed prefix + fixed `@cloudinary.com`.
+- Header logo: `logo/cloudinary-everywhere-field-navy-cloud13.png` (the latest Everywhere mark, 2026-09-26), not the plain Cloudinary badge.
+- Pizza art in the app shows the whole slice. `product-base-pizza-*.png` crops the tip at the slot's top edge (fine on the magnet), so the app renders pizza from `templates/figma/product-pizza-*.svg` with a taller viewBox. The Cloudinary `product-base-pizza` files are unchanged; the web renditions (landing, PDP, email) will show the same crop unless those are re-exported.
 - Step 03 camera button: "Take a selfie" before the first photo, "Retake" after. Library: "Choose from library".
 - Upload error at step 05: the button turns into "Retry", no extra message. Answers are kept. Timeout 30 s.
 - A photo the phone cannot read at all (e.g. HEIC on Android) shows the normal fail copy ("We could not find a face").
