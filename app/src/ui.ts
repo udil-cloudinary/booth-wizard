@@ -1,4 +1,5 @@
-import { copy } from './content';
+import { isSurprise } from './config';
+import { copy, PRODUCTS, type ProductType } from './content';
 
 type Attrs = Record<string, string | number | boolean | EventListener | undefined>;
 type Child = Node | string | null | undefined | false;
@@ -23,6 +24,20 @@ export function h<K extends keyof HTMLElementTagNameMap>(tag: K, attrs: Attrs = 
 const ART = import.meta.glob<string>('./art/*.webp', { eager: true, query: '?url', import: 'default' });
 export const badgeUrl = ART['./art/badge.webp'];
 export const art = (type: string, variant: string) => ART[`./art/product-base-${type}-${variant}.webp`];
+
+/**
+ * The product picture for the welcome hero and the step 04 cards. The surprise
+ * variation shows pizza and caffe without the label area (sleeve / bar card),
+ * so nothing personalised is hinted at; gelato's cup is part of the product.
+ */
+export function productArt(type: ProductType): { src: string; w: number; h: number } {
+  if (isSurprise() && type !== 'gelato') {
+    return type === 'pizza'
+      ? { src: ART['./art/plain-pizza.webp'], w: 360, h: 496 }
+      : { src: ART['./art/plain-caffe.webp'], w: 360, h: 360 };
+  }
+  return { src: art(type, PRODUCTS[type].heroArt), w: 360, h: 599 };
+}
 
 export function header(opts: { tricolore?: boolean } = {}): HTMLElement {
   return h(

@@ -1,4 +1,5 @@
 import { uploadVisitor } from '../cloudinary';
+import { isSurprise } from '../config';
 import { copy, OWN_ANSWER, OWN_MAX, PRODUCTS } from '../content';
 import { dataUrlToBlob } from '../image';
 import { createPreview } from '../labelPreview';
@@ -10,6 +11,8 @@ import type { Go } from './types';
 export function favourite(go: Go): HTMLElement {
   const type = state.type!;
   const p = PRODUCTS[type];
+  // The surprise variation never shows the personalised product before the booth.
+  const showPreview = !isSurprise();
   const preview = createPreview();
   let busy = false;
 
@@ -48,7 +51,7 @@ export function favourite(go: Go): HTMLElement {
     ownWrap.hidden = !state.ownActive;
     (ownWrap.querySelector('.count') as HTMLElement).textContent = `${ownInput.value.length}/${OWN_MAX}`;
     const { favorite, variant } = current();
-    if (state.ownActive || favorite) {
+    if (showPreview && (state.ownActive || favorite)) {
       // While "Write your own" is active the art stays own-answer until the text matches a chip.
       preview.show(art(type, variant || OWN_ANSWER), favorite);
     }
@@ -130,7 +133,7 @@ export function favourite(go: Go): HTMLElement {
     h('p', { class: 'lead' }, copy.favourite.helper),
     h('div', { class: 'chips', role: 'group', 'aria-label': p.question }, ...chipButtons, ownChip),
     ownWrap,
-    preview.root,
+    showPreview ? preview.root : null,
     h('div', { class: 'actions' }, next),
   );
 }

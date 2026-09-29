@@ -13,4 +13,6 @@ for f in "$ROOT"/templates/cloudinary/product-base-*.png; do
   cwebp -quiet -q 82 -alpha_q 90 -resize 360 0 "$f" -o "$OUT/$name.webp"
 done
 cwebp -quiet -q 90 -alpha_q 100 -resize 120 120 "$ROOT/logo/cloudinary-everywhere-field-navy-cloud13.png" -o "$OUT/badge.webp"
+# Surprise variation: pizza and caffe without the label area.
+python3 scripts/render-plain.py
 ls -la "$OUT" | awk '{s+=$5} END {print "art total bytes:", s}'

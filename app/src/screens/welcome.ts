@@ -1,5 +1,5 @@
-import { copy, PRODUCT_TYPES, PRODUCTS } from '../content';
-import { art, h, header, primary } from '../ui';
+import { copy, PRODUCT_TYPES } from '../content';
+import { h, header, primary, productArt } from '../ui';
 import type { Go } from './types';
 
 export function welcome(go: Go): HTMLElement {
@@ -10,7 +10,10 @@ export function welcome(go: Go): HTMLElement {
     h(
       'div',
       { class: 'hero', 'aria-hidden': 'true' },
-      ...PRODUCT_TYPES.map((t) => h('img', { src: art(t, PRODUCTS[t].heroArt), alt: '', width: 110, height: 183, fetchpriority: 'high' })),
+      ...PRODUCT_TYPES.map((t) => {
+        const a = productArt(t);
+        return h('img', { src: a.src, alt: '', width: a.w, height: a.h, fetchpriority: 'high' });
+      }),
     ),
     h('h1', { tabindex: -1 }, copy.welcome.title),
     h('p', { class: 'lead' }, copy.welcome.body),

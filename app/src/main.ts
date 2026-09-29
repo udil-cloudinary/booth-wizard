@@ -26,20 +26,22 @@ function guard(step: Step): Step {
   return step;
 }
 
-/** ?theme=blue|yellow picks the accent for this session; otherwise VITE_THEME. */
-function applyTheme() {
-  const KEY = 'booth-wizard-theme';
-  let theme: string = config.theme;
+/**
+ * ?theme=blue|yellow and ?mode=preview|surprise pick the accent and the variation
+ * for this session (kept across reloads and "Start over"); otherwise the build's env.
+ */
+function fromUrlOrSession(param: string, allowed: string[], fallback: string): string {
+  const key = `booth-wizard-${param}`;
   try {
-    const q = new URLSearchParams(location.search).get('theme');
-    if (q === 'blue' || q === 'yellow') sessionStorage.setItem(KEY, q);
-    theme = sessionStorage.getItem(KEY) || theme;
+    const q = new URLSearchParams(location.search).get(param);
+    if (q && allowed.includes(q)) sessionStorage.setItem(key, q);
+    return sessionStorage.getItem(key) || fallback;
   } catch {
-    /* ignore */
+    return fallback;
   }
-  document.documentElement.dataset.theme = theme;
 }
-applyTheme();
+document.documentElement.dataset.theme = fromUrlOrSession('theme', ['yellow', 'blue'], config.theme);
+document.documentElement.dataset.mode = fromUrlOrSession('mode', ['preview', 'surprise'], config.mode);
 
 const app = document.getElementById('app')!;
 

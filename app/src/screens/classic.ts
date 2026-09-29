@@ -1,14 +1,16 @@
 import { copy, PRODUCT_TYPES, PRODUCTS, type ProductType } from '../content';
 import { state, update } from '../state';
 import { slug } from '../text';
-import { art, CHECK_SVG, h, primary, stepChrome } from '../ui';
+import { isSurprise } from '../config';
+import { art, CHECK_SVG, h, primary, productArt, stepChrome } from '../ui';
 import type { Go } from './types';
 
 const preloaded = new Set<ProductType>();
 
 /** Warm the cache with the 6 preview images of the chosen type. */
 function preloadType(t: ProductType) {
-  if (preloaded.has(t)) return;
+  // The surprise variation shows no preview art on step 05.
+  if (preloaded.has(t) || isSurprise()) return;
   preloaded.add(t);
   const variants = [...PRODUCTS[t].chips.map(slug), 'own-answer'];
   for (const v of variants) {
@@ -35,7 +37,10 @@ export function classic(go: Go): HTMLElement {
       'label',
       { class: 'card', for: `type-${t}` },
       input,
-      h('img', { src: art(t, p.heroArt), alt: '', width: 68, height: 113 }),
+      (() => {
+        const a = productArt(t);
+        return h('img', { src: a.src, alt: '', width: a.w, height: a.h });
+      })(),
       h('span', { class: 'card-text' }, h('span', { class: 'card-title' }, p.label), h('span', { class: 'card-sub' }, p.tagline)),
       h('span', { class: 'check', 'aria-hidden': 'true', html: CHECK_SVG }),
     );
