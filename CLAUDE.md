@@ -1,6 +1,6 @@
 # Claude Code context: Booth wizard (Gathering 2026, Lago Maggiore)
 
-You are building the booth's mobile WEB app: a short wizard a visitor opens on their own phone. It is the ONLY app we build for the booth.
+You are building the booth's mobile WEB app: a short wizard a visitor opens on their own phone. It is the only app visitors use at the booth (the TV loop, operator page and backend are a separate build in `../booth-tv/`).
 
 ## What it is
 

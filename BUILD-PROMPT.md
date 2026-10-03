@@ -82,7 +82,7 @@ Match the "Wizard v2 · two stations" boards:
 - `npm run dev` works on a phone on the same network (Vite `--host`, HTTPS via `@vitejs/plugin-basic-ssl` so the camera opens).
 - `npm run build` produces a static `dist/` under 1.5 MB first load.
 - A `MOCK_UPLOAD=1` mode (or `VITE_MOCK_UPLOAD=true`) that skips the network and returns a fake response with one face, so the whole flow can be demoed without the booth cloud.
-- A short `TESTING.md`: the manual test list (every chip per type, own answer that matches a chip, own answer at 18 chars, a very long name, no face, library photo, airplane mode at upload, reload mid-wizard) and the first-run check on the real booth cloud: upload once and confirm in the Media Library that the metadata, the tags, the `booth/visitors` folder and the eager renditions arrived.
+- A short `TESTING.md`: the manual test list (every chip per type, own answer that matches a chip, own answer at 18 chars, a very long name, no face, library photo, airplane mode at upload, reload mid-wizard) and the first-run check on the real booth cloud: upload once and confirm in the Media Library that the metadata, the tags, the `booth/visitors` folder.
 - Do not invent copy. If something in WIZARD-CONTENT.md is unclear or contradicts this prompt, follow WIZARD-CONTENT.md and list the question at the end of your summary.
 
 Start by reading the three files, then give me a short plan (files, modules, order) before writing code.

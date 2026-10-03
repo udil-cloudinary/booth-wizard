@@ -14,7 +14,7 @@ cp .env.example .env # fill VITE_CLOUD_NAME and VITE_UPLOAD_PRESET
 | Env | Default | What |
 |---|---|---|
 | `VITE_CLOUD_NAME` | `your-booth-cloud` | Booth cloud name |
-| `VITE_UPLOAD_PRESET` | `booth_wizard` | The UNSIGNED preset (folder, `booth-visitor` tag, `faces`, eager, formats, size limit live there) |
+| `VITE_UPLOAD_PRESET` | `booth_wizard` | The UNSIGNED preset (folder, `booth-visitor` tag, `faces`, formats, size limit live there) |
 | `VITE_ASSET_FOLDER` | `booth/visitors` | Sent as `asset_folder` (the preset should fix it too) |
 | `VITE_META_MODE` | `metadata` | `context` sends the same fields as `context` if the cloud refuses structured metadata on unsigned uploads |
 | `VITE_THEME` | `yellow` | Accent colour. `blue` = the booth backdrop's "Everywhere" blue `#5DB4F2`. Any URL can override it for the session with `?theme=blue` or `?theme=yellow` |

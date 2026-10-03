@@ -50,7 +50,7 @@ Pizza is the full takeaway slice (triangle) in a kraft sleeve, gelato the coppet
 
 No visitor login and NO backend for the wizard. UNSIGNED upload (decided 2026-09-27 with the devs), the same way our demo clouds do it. Good enough because the booth cloud is used only for the gathering and only by the people at it.
 
-1. On the booth cloud, create ONE unsigned upload preset (e.g. `booth_wizard`). The preset, not the phone, fixes everything that matters: asset folder `booth/visitors/`, tag `booth-visitor`, `faces: true`, the eager renditions (async), allowed formats jpg/png/heic/webp, a max file size (e.g. 10 MB), `unique_filename`, no overwrite.
+1. On the booth cloud, create ONE unsigned upload preset (e.g. `booth_wizard`). The preset, not the phone, fixes everything that matters: asset folder `booth/visitors/`, tag `booth-visitor`, `faces: true`, allowed formats jpg/png/heic/webp, a max file size (e.g. 10 MB), `unique_filename`, no overwrite.
 2. The phone posts the selfie straight to `https://api.cloudinary.com/v1_1/<booth-cloud>/image/upload` with `upload_preset`, `public_id`, the `type-{pizza|gelato|caffe}` tag, and the structured `metadata` (fields below). Only the cloud name and the preset name live in the app, no API key or secret.
 3. ONE upload per attempt, at "Make my product" on step 05, with every metadata field filled: an unsigned upload cannot edit metadata afterwards. So the step 03 face check runs in the browser (e.g. MediaPipe Face Detector), and Cloudinary's `faces` in the upload response is the backstop: if it is empty, send the visitor back to step 03 with the fail copy; the retake is a new upload and the latest per email wins.
 4. No employee list (dropped 2026-09-28): the name is free text. The fixed `@cloudinary.com` domain keeps every email a company address.
@@ -58,7 +58,7 @@ No visitor login and NO backend for the wizard. UNSIGNED upload (decided 2026-09
 What this trades away, and how we cover it:
 - Anyone who finds the cloud name + preset name could upload. Cover: formats and size limited by the preset, nothing is published without the staff Print tap and the TV Hide button, and the preset is DISABLED right after the gathering, then `booth/visitors/` is deleted.
 - Nobody can overwrite or delete an existing asset through an unsigned upload, so visitors cannot touch each other's photos.
-- Verify on the first test upload: that the structured `metadata` parameter and the `faces` / eager settings are honoured for unsigned uploads on the booth cloud. If metadata is refused, send the same fields as `context` and have the staff side copy them into metadata.
+- Verify on the first test upload: that the structured `metadata` parameter and the `faces` setting are honoured for unsigned uploads on the booth cloud. If metadata is refused, send the same fields as `context` and have the staff side copy them into metadata.
 
 ## Hosting and deployment
 
@@ -79,7 +79,7 @@ The wizard is a static site (HTML, CSS, JS and the bundled art), with no server 
   - Art file = `{product_type}-{variant}`, e.g. `magnet-layer-pizza-artichoke.png`, `product-base-gelato-own-answer.png`. Nobody derives it from `favorite`.
   - Own answer: `variant` = `own-answer` (default art: margherita, strawberry pink, moka pot), `favorite` = the typed text. If the typed text matches one of that type's chips (case and accents ignored, e.g. "pistachio"), the app stores that chip's variant instead, so the art matches the words.
   - `favorite_source` is dropped: `variant` = `own-answer` already says it.
-- Eager renditions at upload: payoff renditions (landing hero, PDP, email header) and the magnet print file, so the TV never waits.
+- Renditions (magnet print, TV hero, PDP, email) are NOT eager: they are built on the template images with the selfie as an overlay (`templates/cloudinary-setup/`). The backend warms them the first time it sees a visitor. The wizard's upload preset only needs `faces: true`.
 - Repeat visitors: latest upload per email wins everywhere.
 
 ## Build decisions (v1, confirmed by Udi 2026-09-28)

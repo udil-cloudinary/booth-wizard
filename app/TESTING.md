@@ -5,9 +5,9 @@ Run on a real iPhone (Safari) and a real Android phone (Chrome), portrait. Use `
 ## Flow
 
 - [ ] 01: hero shows margherita slice, pistachio gelato, cappuccino. Tricolore strip under the header. No privacy footer. Start opens 02.
-- [ ] 02: type a name with extra spaces ("  Maya   Cohen "): stored as "Maya Cohen", label shows MAYA.
+- [ ] 02: type a name with extra spaces ("  Maya   Sol "): stored as "Maya Sol", label shows MAYA.
 - [ ] 02: `@cloudinary.com` sits fixed after the email field; tapping it focuses the field.
-- [ ] 02: type or paste a full address (`maya.cohen@gmail.com`): only `maya.cohen` stays, sent as `maya.cohen@cloudinary.com`.
+- [ ] 02: type or paste a full address (`maya.sol@gmail.com`): only `maya.sol` stays, sent as `maya.sol@cloudinary.com`.
 - [ ] 02: invalid prefixes (`.maya`, `maya.`, `ma..ya`, `ma!ya`): field turns red, Next disabled.
 - [ ] 02: Next needs both a name and a valid prefix.
 - [ ] 02: a very long name (40 characters): the field stops at 40; later the label shrinks the first name on one line.
@@ -41,13 +41,13 @@ Run on a real iPhone (Safari) and a real Android phone (Chrome), portrait. Use `
 
 Do this once, before printing the QR code.
 
-1. Create the unsigned preset `booth_wizard` (see WIZARD-CONTENT.md, "Upload and auth"): asset folder `booth/visitors`, tag `booth-visitor`, `faces: true`, eager renditions (async), allowed formats jpg/png/heic/webp, max size ~10 MB, unique filename, no overwrite.
+1. Create the unsigned preset `booth_wizard` (see WIZARD-CONTENT.md, "Upload and auth"): asset folder `booth/visitors`, tag `booth-visitor`, `faces: true`, allowed formats jpg/png/heic/webp, max size ~10 MB, unique filename, no overwrite.
 2. Create the structured metadata fields with these exact external IDs: `visitor_name`, `first_name`, `email`, `product_type` (single-select pizza/gelato/caffe), `variant` (single-select, the 15 chip slugs + `own-answer`), `favorite`, `face_detected`, `tv_status` (auto/hidden), `print_status` (none/printed).
 3. Set `VITE_CLOUD_NAME` and `VITE_UPLOAD_PRESET`, `npm run dev`, go through the wizard once on a phone.
 4. In the Media Library, open the new asset and confirm:
    - [ ] It is in the `booth/visitors` folder, public ID `{first}-{last}-{4 chars}`.
    - [ ] Tags: `booth-visitor` and `type-{type}`.
    - [ ] All 9 metadata fields are filled with the values you picked.
-   - [ ] The eager renditions exist (Derived assets).
+   - [ ] The magnet and TV images render from `templates/cloudinary-setup` (`npm run sample`); they are built on the templates, not eager on the selfie.
    - [ ] The upload response had a non-empty `faces` array (browser DevTools → Network).
 5. If the upload fails with a metadata error, set `VITE_META_MODE=context`, redo step 3, and confirm the fields arrive as contextual metadata instead (the staff side then copies them into structured metadata).
