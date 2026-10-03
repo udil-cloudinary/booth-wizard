@@ -105,8 +105,9 @@ export function favourite(go: Go): HTMLElement {
         },
         setProgress,
       );
-      if (!res.faces.length) {
+      if (res.faces && !res.faces.length) {
         // Cloudinary is the backstop: no face, back to the selfie. The retake is a fresh upload.
+        // A preset without face detection returns no `faces` at all: then the browser check stands.
         update({ faceStatus: 'none', face: null });
         go('pose');
         return;

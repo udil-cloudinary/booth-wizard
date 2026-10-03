@@ -19,7 +19,8 @@ export interface VisitorUpload {
 export interface UploadResult {
   public_id: string;
   secure_url: string;
-  faces: number[][];
+  /** null when the preset has no face detection (the response has no `faces`). */
+  faces: number[][] | null;
 }
 
 export class UploadError extends Error {
@@ -78,7 +79,7 @@ export function uploadVisitor(v: VisitorUpload, onProgress: (fraction: number) =
       }
       if (xhr.status >= 200 && xhr.status < 300 && body) {
         const r = body as Partial<UploadResult>;
-        resolve({ public_id: r.public_id || v.publicId, secure_url: r.secure_url || '', faces: r.faces || [] });
+        resolve({ public_id: r.public_id || v.publicId, secure_url: r.secure_url || '', faces: r.faces ?? null });
       } else {
         const msg = (body as { error?: { message?: string } } | null)?.error?.message || `HTTP ${xhr.status}`;
         console.warn('Upload failed:', msg);
