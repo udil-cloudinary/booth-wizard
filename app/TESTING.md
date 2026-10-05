@@ -27,7 +27,9 @@ Run on a real iPhone (Safari) and a real Android phone (Chrome), portrait. Use `
 - [ ] 05: the sticker shows the selfie, face centred.
 - [ ] 05: no button until something happens. Tapping a chip starts the upload at once: progress fills the "Make my product" bar, then 06.
 - [ ] 05: Write your own: the button shows, enabled once there is text; the button or Enter uploads.
-- [ ] 06: "Grazie, {first}!" and "Your {answer} {type} is in the Cloudinary DAM." with the real values (e.g. "Your Artichoke pizza").
+- [ ] 06: confetti from both bottom corners; "Grazie, {first}!" and "Your {answer} {type} is in the Cloudinary DAM." fill the screen word by word, slow enough to read along, with the real values (e.g. "Your Artichoke pizza", in the accent), stay about 3 s, then the stations view with no blank frame in between. A tap skips the intro.
+- [ ] 06: the Everywhere card shows first with the Agent card peeking; it slides to Agent and back once by itself; swiping works and stops the hint; the dots follow. "Finish either one", the P.S. and Start over sit at the bottom without scrolling (also on an iPhone SE).
+- [ ] 06: with Reduce Motion on (iOS Settings > Accessibility > Motion): no confetti, no slide hint, the sentence appears at once.
 - [ ] 06: Start over returns to 01 with everything cleared.
 
 ## Resilience

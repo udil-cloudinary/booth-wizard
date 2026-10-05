@@ -49,15 +49,21 @@ export const copy = {
   },
   done: {
     title: 'Grazie, {first}!',
-    body: 'Your {answer} {type} is in the Cloudinary DAM. Now make it real at one of our stations.',
+    // The intro shows `saved` word by word; the stations view then opens with `body`.
+    saved: 'Your {answer} {type} is in the Cloudinary DAM.',
+    body: 'Now make it real at one of our stations.',
+    stationsLabel: 'Our stations',
+    // Carousel order: Everywhere first.
     stations: [
       {
-        name: 'Agent station',
-        body: 'Pick Claude or ChatGPT, give it your name, and watch the agent build your magnet with Cloudinary.',
-      },
-      {
+        id: 'everywhere',
         name: 'Everywhere station',
         body: 'Write a page in WordPress, Shopify and more. Your assets find you, without leaving the page.',
+      },
+      {
+        id: 'agent',
+        name: 'Agent station',
+        body: 'Pick Claude or ChatGPT, give it your name, and watch the agent build your magnet with Cloudinary.',
       },
     ],
     collect: 'Finish either one and collect your magnet + keychain at the counter.',

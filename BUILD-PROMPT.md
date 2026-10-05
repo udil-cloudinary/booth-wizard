@@ -30,7 +30,7 @@ Screen rules that matter:
 - 03: before a photo, show only the two capture buttons (no empty photo box), centred on the screen; the preview then appears above them and pushes them down. Camera via `<input type="file" accept="image/*" capture="user">`, plus "Choose from library". Show the photo, then run a face check in the browser (see "Face check"). Once a new photo passes, move on to 04 by itself after about 1 s (no Next; Next only shows when coming Back to a photo that already passed). Retake always available.
 - 04: three cards, nothing preselected, one required. A card tap picks it and moves on to 05 (no Next).
 - 05: question and 5 chips per type (exact order from the doc) plus "Write your own" (max 18 chars, trimmed, no word filter). A chip tap uploads right away (no Next); "Make my product" shows only for "Write your own", as the upload progress, and as Retry. After the first tap, show the live product preview card (see "Label preview"); it swaps art on every tap.
-- 06: copy from the doc with `{first}`, `{answer}`, `{type}` filled in, e.g. "Your Artichoke pizza is in the Cloudinary DAM."
+- 06: copy from the doc with `{first}`, `{answer}`, `{type}` filled in, e.g. "Your Artichoke pizza is in the Cloudinary DAM." Confetti, then that sentence full screen word by word at reading pace (a word every 0.3 s, then held 3 s; tap skips), then a carousel of the two station cards (Everywhere first, the other peeking; one slide-and-back hint), with "Finish either one" at the bottom.
 - Welcome: no privacy or consent footer. Do not add one.
 
 ## Face check and upload (important: unsigned uploads cannot be edited later)
