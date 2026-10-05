@@ -9,9 +9,9 @@ Replaces the Act 1 wizard (topic: food / place / football team). Serves both sta
 |---|--------|------|-------|
 | 01 | Welcome | "Ciao! Become an Italian classic." / "Take a selfie and pick your flavour. Then head to a station and make it real, with an AI agent or right inside the tools you already use." Chips: 60 seconds, magnet + keychain. No privacy or consent footer (Udi 2026-09-27: not needed). CTA: Start | |
 | 02 | Who are you? | "Your first name goes on your product label." NAME: free text. Helper: "Use the name you go by. Remember it, you will type it at the station." EMAIL: the visitor types only the part before the @, `@cloudinary.com` is fixed next to the field. CTA: Next | Name: any text, trimmed, max 40 characters; first name = first word. Email prefix: letters, digits and `. _ + -`, no leading/trailing dot, no "..". Pasting a full address keeps only the prefix. (Changed 2026-09-28: no employee list.) |
-| 03 | Strike a pose | "This face is about to be famous." Success: "Face found. Looking great, {first}". Fail: "We could not find a face" / "Face the camera, find some light, and keep sunglasses off for a second." CTAs: Retake, Next | Next disabled until a face is found (checked in the browser, see "Upload and auth"). Library upload allowed. |
-| 04 | Pick your Italian classic | "It becomes your product, with your face on the label." Cards: Pizza "Wood-fired, obviously" / Gelato "One scoop is never enough" / Caffè "Standing at the bar, like a local". CTA: Next | One required. Nothing preselected. Card art: see "Product art in the app" below. |
-| 05 | Favourite (per type) | Helper for all: "One tap, or write your own." Live product preview card (appears after the first tap): the product art for the tapped answer + "YOUR PRODUCT / {FIRST} / {answer}" + "Your selfie goes in the sticker." CTA: Make my product | Next disabled until a chip or own answer. Preview swaps art on every tap. |
+| 03 | Strike a pose | "This face is about to be famous." Success: "Face found. Looking great, {first}". Fail: "We could not find a face" / "Face the camera, find some light, and keep sunglasses off for a second." CTA: Retake. No Next: once a new photo passes, the app moves on to 04 by itself after about 1 s (Next only shows when the visitor comes Back to a photo that already passed) | Moves on only once a face is found (checked in the browser, see "Upload and auth"). Library upload allowed. |
+| 04 | Pick your Italian classic | "It becomes your product, with your face on the label." Cards: Pizza "Wood-fired, obviously" / Gelato "One scoop is never enough" / Caffè "Standing at the bar, like a local". No CTA: tapping a card picks it and moves on to 05 | One required. Nothing preselected. Card art: see "Product art in the app" below. |
+| 05 | Favourite (per type) | Helper for all: "One tap, or write your own." Live product preview card (appears after the first tap): the product art for the tapped answer + "YOUR PRODUCT / {FIRST} / {answer}" + "Your selfie goes in the sticker." No CTA for chips: tapping a chip starts the upload right away. "Make my product" shows only for "Write your own" (also Enter), as the upload progress, and as Retry | Preview shows the tapped answer while it uploads. |
 | 06 | Done | "Grazie, {first}!" / "Your {answer} {type} is in the Cloudinary DAM. Now make it real at one of our stations." Agent station: "Pick Claude or ChatGPT, give it your name, and watch the agent build your magnet with Cloudinary." Everywhere station: "Write a page in WordPress, Shopify and more. Your assets find you, without leaving the page." "Finish either one and collect your magnet + keychain at the counter." P.S. "Keep an eye on the big screen. Your product might just show up." | |
 
 ## Step 05 questions and chips
@@ -63,7 +63,7 @@ What this trades away, and how we cover it:
 ## Hosting and deployment
 
 The wizard is a static site (HTML, CSS, JS and the bundled art), with no server code, so it deploys anywhere. Cloudinary picks one of: **Cloudflare** (Pages), **AWS** (S3 + CloudFront, or Amplify Hosting) or **Vercel**. Requirements whichever is chosen:
-- HTTPS (the phone camera only opens on HTTPS) on a short URL for the QR code, e.g. `everywhere.cloudinary.com`.
+- HTTPS (the phone camera only opens on HTTPS) on a short URL for the QR code: `everywhere.cloudinary.app` (decided 2026-10-05, Cloudflare).
 - Fast on phone networks: CDN-cached, art as optimized web images.
 - The TV, operator page and print queue go on the same provider (their small backend runs as that provider's functions: Cloudflare Workers, AWS Lambda or Vercel Functions).
 
@@ -93,12 +93,13 @@ The app is built: `products/booth-wizard/app/` (README for run and deploy, TESTI
 - Accent colour (2026-09-28): two versions to compare. Yellow `#FFD23F` (default) and blue `#5DB4F2`, the "Everywhere" blue from the booth backdrop title. Switch with `?theme=blue` / `?theme=yellow` in the URL, or `VITE_THEME` for the build. Everything else (background, text, kraft label) is the same.
 - Surprise variation (2026-09-29), `?mode=surprise` or `VITE_MODE=surprise`; the default stays `preview`. The visitor never sees their personalised product on the phone: they see it only at the booth (TV, stations, magnet). Step 05 has no preview (no product art, no name label, no sticker). The welcome hero and step 04 cards show pizza without the kraft sleeve (margherita slice with a crust edge) and caffè without the bar card (cappuccino cup only); gelato keeps its cup. Everything else, including the upload, is identical.
 - Step 03 camera button: "Take a selfie" before the first photo, "Retake" after. Library: "Choose from library".
-- Upload error at step 05: the button turns into "Retry", no extra message. Answers are kept. Timeout 30 s.
+- Upload error at step 05: the button turns into "Retry", no extra message. Answers are kept; tapping a chip again also retries. Timeout 30 s.
+- No Next buttons on 03, 04 and 05 (2026-10-05, for a smoother flow): a passed selfie, a card tap and a chip tap each move on by themselves. 02 keeps Next (typed fields).
 - A photo the phone cannot read at all (e.g. HEIC on Android) shows the normal fail copy ("We could not find a face").
 - Step 06 sentence uses the type in lower case: "Your Espresso caffè is in the Cloudinary DAM", "Your Nonna's Fig gelato ...".
 - Step 06 shows "Agent station" and "Everywhere station" as the headings of the two station cards.
 - Folder: the app sends `asset_folder` = `booth/visitors` (dynamic folders); the preset fixes the folder too. If the booth cloud uses fixed folders, switch to `folder` in `app/src/cloudinary.ts` after the first test upload.
-- Face check: MediaPipe runtime bundled with the app and loaded only on step 03; if it has not loaded in 8 s, Next is allowed and Cloudinary's `faces` is the backstop.
+- Face check: MediaPipe runtime bundled with the app and loaded only on step 03; if it has not loaded in 8 s, the app moves on anyway and Cloudinary's `faces` is the backstop.
 
 ## Open items
 

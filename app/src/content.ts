@@ -38,7 +38,6 @@ export const copy = {
   classic: {
     title: 'Pick your Italian classic',
     body: 'It becomes your product, with your face on the label.',
-    cta: 'Next',
   },
   favourite: {
     helper: 'One tap, or write your own.',

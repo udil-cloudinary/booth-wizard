@@ -52,12 +52,15 @@ The name is free text; the first word goes on the label. The email field takes o
 
 ## Deploy
 
-All three serve `dist/` as static files over HTTPS on a CDN. Point the short QR domain (e.g. `everywhere.cloudinary.com`) at it.
+All three serve `dist/` as static files over HTTPS on a CDN. The QR domain is `everywhere.cloudinary.app` (Cloudflare, below).
 
-**Cloudflare Pages**
-- Dashboard: Workers & Pages → Create → Pages → connect the repo. Root directory `products/booth-wizard/app`, build command `npm run build`, output `dist`. Add the `VITE_*` variables under Settings → Environment variables.
-- Or from a laptop: `npm run build && npx wrangler pages deploy dist --project-name booth-wizard`.
-- Custom domain: Pages project → Custom domains.
+**Cloudflare (chosen; account "Cloudinary Integrations")**
+
+A Worker that only serves `dist/` as static assets (Cloudflare has folded Pages into Workers; `wrangler pages project create` now delegates there). Config: `wrangler.jsonc`, cache rules: `public/_headers`.
+- One-time: `npx wrangler login` (Wrangler is a dev dependency). The company npm mirror lacks these packages, so install with `npm install --registry=https://registry.npmjs.org/`.
+- `app/.env` must point at the booth cloud: the `VITE_*` values are baked in at build time. `scripts/check-deploy-env.mjs` stops the deploy if the cloud name is the placeholder or mock upload is on.
+- `npm run deploy`: check, build, `wrangler deploy` to production at **https://everywhere.cloudinary.app** (also `booth-wizard.<subdomain>.workers.dev`). The first run creates the Worker, and Cloudflare adds the DNS record and certificate for the custom domain (`routes` in `wrangler.jsonc`; the `cloudinary.app` zone must be on the same account).
+- `npm run deploy:preview`: same, but `wrangler versions upload` gives a preview URL and leaves production alone.
 
 **AWS (S3 + CloudFront)**
 - `npm run build`, then `aws s3 sync dist/ s3://<bucket>/ --delete`.

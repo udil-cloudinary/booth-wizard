@@ -15,6 +15,7 @@ export function favourite(go: Go): HTMLElement {
   const showPreview = !isSurprise();
   const preview = createPreview();
   let busy = false;
+  let failed = false; // the last upload failed: the button stays as Retry
 
   const next = primary(copy.favourite.cta, () => submit());
   const nextLabel = next.querySelector('.label')!;
@@ -56,12 +57,16 @@ export function favourite(go: Go): HTMLElement {
       preview.show(art(type, variant || OWN_ANSWER), favorite);
     }
     next.disabled = busy || !favorite;
+    // A chip tap uploads straight away, so the button only shows for a typed
+    // answer, during the upload (it carries the progress) and as Retry.
+    next.hidden = !(state.ownActive || busy || failed);
   };
 
   const chooseChip = (c: string) => {
     if (busy) return;
     update({ favorite: c, ownActive: false });
     render();
+    void submit();
   };
   const chooseOwn = () => {
     if (busy) return;
@@ -74,7 +79,9 @@ export function favourite(go: Go): HTMLElement {
     render();
   });
   ownInput.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') ownInput.blur();
+    if (e.key !== 'Enter') return;
+    ownInput.blur();
+    void submit();
   });
 
   const setProgress = (f: number) => {
@@ -116,6 +123,7 @@ export function favourite(go: Go): HTMLElement {
       go('done');
     } catch {
       busy = false;
+      failed = true;
       next.classList.remove('uploading');
       next.removeAttribute('aria-busy');
       setProgress(0);
