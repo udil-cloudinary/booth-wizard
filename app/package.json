@@ -12,12 +12,19 @@
     "deploy:preview": "node scripts/check-deploy-env.mjs && npm run build && wrangler versions upload",
     "art": "sh scripts/build-art.sh",
     "postinstall": "node scripts/copy-mediapipe.mjs",
-    "fetch-model": "curl -fL -o public/mediapipe/blaze_face_short_range.tflite https://storage.googleapis.com/mediapipe-models/face_detector/blaze_face_short_range/float16/1/blaze_face_short_range.tflite"
+    "fetch-model": "curl -fL -o public/mediapipe/blaze_face_short_range.tflite https://storage.googleapis.com/mediapipe-models/face_detector/blaze_face_short_range/float16/1/blaze_face_short_range.tflite",
+    "test": "vitest run"
   },
   "devDependencies": {
+    "@testing-library/dom": "^10.4.2",
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/user-event": "^14.6.7",
     "@vitejs/plugin-basic-ssl": "^2.3.0",
+    "jsdom": "^29.1.1",
+    "msw": "^2.15.0",
     "typescript": "^7.0.2",
     "vite": "^8.3.1",
+    "vitest": "^5.0.3",
     "wrangler": "^4.147.0"
   },
   "dependencies": {
