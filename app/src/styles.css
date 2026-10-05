@@ -242,6 +242,9 @@ h1 {
 
 .primary .label {
   position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .primary .fill {

@@ -45,6 +45,8 @@ export const copy = {
     previewCaption: 'YOUR PRODUCT',
     previewNote: 'Your selfie goes in the sticker.',
     cta: 'Make my product',
+    uploading: 'Making your product…',
+    ready: 'Your product is ready',
     retry: 'Retry',
   },
   done: {

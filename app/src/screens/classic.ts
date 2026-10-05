@@ -20,7 +20,7 @@ function preloadType(t: ProductType) {
 }
 
 /** How long the picked card's check shows before moving on. */
-const ADVANCE_MS = 250;
+const ADVANCE_MS = 650;
 
 export function classic(go: Go): HTMLElement {
   if (state.type) preloadType(state.type);

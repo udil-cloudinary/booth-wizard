@@ -14,11 +14,15 @@ export const config = {
     'https://storage.googleapis.com/mediapipe-models/face_detector/blaze_face_short_range/float16/1/blaze_face_short_range.tflite',
   // Accent theme: yellow (default) or blue (booth backdrop blue). Overridable with ?theme=blue|yellow.
   theme: ((env.VITE_THEME as string) === 'blue' ? 'blue' : 'yellow') as 'yellow' | 'blue',
-  // Variation: preview (default, live product preview on step 05) or surprise
-  // (no product preview; hero/cards without the label area). ?mode=preview|surprise overrides.
-  mode: ((env.VITE_MODE as string) === 'surprise' ? 'surprise' : 'preview') as 'preview' | 'surprise',
+  // Variation: surprise (default; no product preview, hero/cards without the label area)
+  // or preview (live product preview on step 05). ?mode=preview|surprise overrides.
+  mode: ((env.VITE_MODE as string) === 'preview' ? 'preview' : 'surprise') as 'preview' | 'surprise',
   // Fixed email domain: visitors only type the part before the @.
   emailDomain: 'cloudinary.com',
   faceModelTimeoutMs: 8000,
   uploadTimeoutMs: 30000,
+  // Step 05: the progress runs at least this long, however fast the upload is,
+  // then "Your product is ready" holds before the Done screen.
+  minUploadMs: 5000,
+  uploadReadyMs: 2000,
 };

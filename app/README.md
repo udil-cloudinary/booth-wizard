@@ -18,7 +18,7 @@ cp .env.example .env # fill VITE_CLOUD_NAME and VITE_UPLOAD_PRESET
 | `VITE_ASSET_FOLDER` | `booth/visitors` | Sent as `asset_folder` (the preset should fix it too) |
 | `VITE_META_MODE` | `metadata` | `context` sends the same fields as `context` if the cloud refuses structured metadata on unsigned uploads |
 | `VITE_THEME` | `yellow` | Accent colour. `blue` = the booth backdrop's "Everywhere" blue `#5DB4F2`. Any URL can override it for the session with `?theme=blue` or `?theme=yellow` |
-| `VITE_MODE` | `preview` | Variation. `preview` shows the live personalised product on step 05. `surprise` hides it until the booth: no preview on step 05, and the welcome hero and step 04 cards show pizza and caffè without the label area (`src/art/plain-*.webp`, from `scripts/render-plain.py`). URL override for the session: `?mode=surprise` / `?mode=preview` |
+| `VITE_MODE` | `surprise` | Variation. `surprise` hides the personalised product until the booth: no preview on step 05, and the welcome hero and step 04 cards show pizza and caffè without the label area (`src/art/plain-*.webp`, from `scripts/render-plain.py`). `preview` shows the live personalised product on step 05. URL override for the session: `?mode=preview` / `?mode=surprise` |
 | `VITE_MOCK_UPLOAD` | `false` | `true` skips the network and fakes a response with one face |
 | `VITE_FACE_MODEL_URL` | Google-hosted BlazeFace | Set to `mediapipe/blaze_face_short_range.tflite` after `npm run fetch-model` to self-host |
 
