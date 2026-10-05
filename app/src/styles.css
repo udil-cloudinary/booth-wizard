@@ -436,8 +436,8 @@ h1 {
   border-color: var(--fail);
 }
 
-.photo-empty {
-  color: var(--muted);
+.photo[hidden] {
+  display: none;
 }
 
 .face-status {
@@ -491,6 +491,12 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: 2px;
+}
+
+/* Step 03 before a photo: the capture buttons sit in the middle of the free space. */
+.actions.centered {
+  margin-bottom: auto;
+  padding-top: 0;
 }
 
 /* ---------- 04 Classic ---------- */
@@ -722,41 +728,219 @@ h1 {
 
 /* ---------- 06 Done ---------- */
 
+/* Intro: the saved sentence fills the screen word by word, then makes way for the stations. */
+.done-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  max-width: 430px;
+  margin: 0 auto;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: opacity 0.35s ease;
+}
+
+.done:not(.is-intro) .done-intro {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.intro-hi {
+  margin: 0 0 14px;
+  color: var(--accent);
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.intro-text {
+  margin: 0;
+  font-size: 36px;
+  line-height: 1.16;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.word {
+  display: inline-block;
+  max-width: 100%;
+  overflow-wrap: anywhere; /* an 18-character typed answer with no spaces still fits */
+  opacity: 0;
+  transform: translateY(0.45em);
+  animation: word-in 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+}
+
+.word.em {
+  color: var(--accent);
+}
+
+@keyframes word-in {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.done-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  transition: opacity 0.45s ease, transform 0.45s ease; /* starts with the intro fade-out: no blank frame */
+}
+
+.done.is-intro .done-main {
+  opacity: 0;
+  transform: translateY(14px);
+}
+
 .done h1 {
   margin-top: 28px;
   font-size: 32px;
 }
 
-.stations {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+.confetti {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 20;
+  pointer-events: none;
 }
 
-.station {
-  padding: 16px;
-  border-radius: 16px;
+/* Stations carousel: card 1 fills most of the width, card 2 peeks in from the right. */
+.carousel {
+  list-style: none;
+  margin: 20px -20px 0;
+  padding: 0 20px;
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 0 20px;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.station-card {
+  flex: 0 0 84%;
+  scroll-snap-align: start;
+  padding: 16px 16px 20px;
+  border-radius: 20px;
   background: var(--surface);
   border: 1.5px solid var(--line);
 }
 
-.station h2 {
-  margin: 0 0 6px;
-  font-size: 18px;
+.station-art {
+  aspect-ratio: 280 / 160;
+  margin-bottom: 16px;
+  border-radius: 14px;
+  background: var(--bg-mid);
+  overflow: hidden;
+}
+
+.station-art svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.station-card h2 {
+  margin: 0 0 8px;
+  font-size: 24px;
+  line-height: 1.15;
   font-weight: 700;
   color: var(--accent);
 }
 
-.station p {
+.station-card p {
   margin: 0;
   color: var(--text-2);
   font-family: var(--small);
   font-weight: 400;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.45;
+}
+
+/* Station art colours (classes inside the inline SVGs). */
+.st-panel { fill: var(--surface-on); stroke: var(--line); stroke-width: 1.5; }
+.st-dot, .st-type { fill: var(--muted); opacity: 0.6; }
+.st-ink { fill: var(--text); opacity: 0.85; }
+.st-soft { fill: var(--text-2); opacity: 0.45; }
+.st-accent, .st-cloud, .st-spark { fill: var(--accent); }
+.st-on-accent { fill: var(--on-accent); }
+.st-slot { fill: none; stroke: var(--accent); stroke-width: 1.5; stroke-dasharray: 4 4; }
+.st-kraft { fill: var(--kraft); }
+.st-face { fill: var(--text); stroke: var(--kraft-accent); stroke-width: 2; }
+.st-label { fill: var(--kraft-text); opacity: 0.75; }
+.st-path, .st-head { fill: none; stroke: var(--accent); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.st-path { stroke-dasharray: 5 5; }
+.st-avatar { fill: var(--accent); }
+.st-bubble { fill: var(--bg-mid); stroke: var(--line); stroke-width: 1.5; }
+.st-ring { fill: none; stroke: var(--accent); stroke-width: 2; stroke-dasharray: 3 6; }
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 14px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  background: var(--line);
+  transition: width 0.25s ease, background 0.25s ease;
+}
+
+.dot.on {
+  width: 22px;
+  background: var(--accent);
+}
+
+/* "Finish either one", the P.S. and Start over stay at the bottom. */
+.done-foot {
+  margin-top: auto;
+}
+
+/* Short phones (iPhone SE): tighter spacing so the footer still fits without scrolling. */
+@media (max-height: 700px) {
+  .done h1 {
+    margin-top: 10px;
+    font-size: 28px;
+  }
+  .done .lead {
+    margin-bottom: 0;
+  }
+  .carousel {
+    margin-top: 12px;
+  }
+  .station-card {
+    padding: 12px 12px 14px;
+  }
+  .station-art {
+    aspect-ratio: 280 / 128;
+    margin-bottom: 10px;
+  }
+  .station-card h2 {
+    font-size: 21px;
+    margin-bottom: 4px;
+  }
+  .station-card p {
+    font-size: 14.5px;
+    line-height: 1.4;
+  }
+  .dots {
+    margin-top: 10px;
+  }
+  .done .collect {
+    margin-top: 12px;
+  }
 }
 
 .collect {
@@ -783,5 +967,10 @@ h1 {
   }
   .spinner {
     animation: spin 2.4s linear infinite !important;
+  }
+  /* The intro words are shown at once instead of animating in. */
+  .word {
+    opacity: 1;
+    transform: none;
   }
 }

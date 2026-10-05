@@ -8,10 +8,16 @@ import type { Go } from './types';
 const CAMERA_SVG =
   '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>';
 
+/** How long "Face found" shows before moving on to step 04. */
+const ADVANCE_MS = 1200;
+
 export function pose(go: Go): HTMLElement {
   preloadFaceDetector();
 
   let run = 0; // ignore results from an older photo
+  // A photo taken on this visit moves on by itself once it passes. Next only shows
+  // when the visitor comes back to a photo that already passed, to keep it.
+  let fresh = false;
   const photoBox = h('div', { class: 'photo' });
   const status = h('div', { class: 'face-status', 'aria-live': 'polite' });
   const next = primary(copy.pose.cta, () => go('classic'));
@@ -21,14 +27,18 @@ export function pose(go: Go): HTMLElement {
   const libraryInput = h('input', { id: 'lib', type: 'file', accept: 'image/*', class: 'visually-hidden' });
   const cameraLabel = h('label', { for: 'cam', class: 'secondary' });
   const libraryLabel = h('label', { for: 'lib', class: 'link' }, copy.pose.library);
+  const actions = h('div', { class: 'actions' }, h('div', { class: 'capture' }, cameraLabel, libraryLabel), next);
+
+  // "unavailable" = the model could not load: let them through, Cloudinary's faces check is the backstop.
+  const accepted = () => state.faceStatus === 'found' || state.faceStatus === 'unavailable';
 
   const render = () => {
     const hasPhoto = !!state.photo;
-    photoBox.replaceChildren(
-      hasPhoto
-        ? h('img', { src: state.photo, alt: '', width: state.photoW, height: state.photoH })
-        : h('span', { class: 'photo-empty', 'aria-hidden': 'true', html: CAMERA_SVG.replace(/22/g, '48') }),
-    );
+    // Before a photo, only the two capture buttons show, centred on the screen. The
+    // photo box comes in above them once there is a photo and pushes them down.
+    photoBox.hidden = !hasPhoto;
+    actions.classList.toggle('centered', !hasPhoto);
+    photoBox.replaceChildren(hasPhoto ? h('img', { src: state.photo, alt: '', width: state.photoW, height: state.photoH }) : '');
     photoBox.classList.toggle('found', state.faceStatus === 'found');
     photoBox.classList.toggle('none', state.faceStatus === 'none');
 
@@ -38,11 +48,12 @@ export function pose(go: Go): HTMLElement {
     else if (state.faceStatus === 'none')
       status.replaceChildren(h('p', { class: 'fail-title' }, copy.pose.failTitle), h('p', { class: 'fail-body' }, copy.pose.failBody));
     else status.replaceChildren();
+    status.hidden = !status.childElementCount;
 
     cameraLabel.innerHTML = '';
     cameraLabel.append(h('span', { 'aria-hidden': 'true', html: CAMERA_SVG }), hasPhoto || state.faceStatus === 'none' ? copy.pose.retake : copy.pose.takeSelfie);
-    // "unavailable" = the model could not load: let them through, Cloudinary's faces check is the backstop.
-    next.disabled = !hasPhoto || !(state.faceStatus === 'found' || state.faceStatus === 'unavailable');
+    next.disabled = !hasPhoto || !accepted();
+    next.hidden = fresh || next.disabled;
   };
 
   const check = async () => {
@@ -55,12 +66,19 @@ export function pose(go: Go): HTMLElement {
     if (r.status === 'found') update({ faceStatus: 'found', face: r.box });
     else update({ faceStatus: r.status, face: null });
     render();
+    if (fresh && accepted()) {
+      setTimeout(() => {
+        // A retake or Back in the meantime cancels it.
+        if (mine === run && photoBox.isConnected) go('classic');
+      }, ADVANCE_MS);
+    }
   };
 
   const onFile = async (input: HTMLInputElement) => {
     const file = input.files?.[0];
     input.value = ''; // allow picking the same file again
     if (!file) return;
+    fresh = true;
     const mine = ++run;
     update({ faceStatus: 'checking' });
     render();
@@ -90,6 +108,6 @@ export function pose(go: Go): HTMLElement {
     status,
     cameraInput,
     libraryInput,
-    h('div', { class: 'actions' }, h('div', { class: 'capture' }, cameraLabel, libraryLabel), next),
+    actions,
   );
 }

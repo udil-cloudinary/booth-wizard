@@ -8,6 +8,8 @@
     "dev:mock": "VITE_MOCK_UPLOAD=true vite --host",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview --host",
+    "deploy": "node scripts/check-deploy-env.mjs && npm run build && wrangler deploy",
+    "deploy:preview": "node scripts/check-deploy-env.mjs && npm run build && wrangler versions upload",
     "art": "sh scripts/build-art.sh",
     "postinstall": "node scripts/copy-mediapipe.mjs",
     "fetch-model": "curl -fL -o public/mediapipe/blaze_face_short_range.tflite https://storage.googleapis.com/mediapipe-models/face_detector/blaze_face_short_range/float16/1/blaze_face_short_range.tflite"
@@ -15,7 +17,8 @@
   "devDependencies": {
     "@vitejs/plugin-basic-ssl": "^2.3.0",
     "typescript": "^7.0.2",
-    "vite": "^8.3.1"
+    "vite": "^8.3.1",
+    "wrangler": "^4.147.0"
   },
   "dependencies": {
     "@mediapipe/tasks-vision": "^1.0.1"

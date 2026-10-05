@@ -27,16 +27,16 @@ Six screens as in WIZARD-CONTENT.md: 01 Welcome, 02 Who are you, 03 Strike a pos
 
 Screen rules that matter:
 - 02: the name is free text (trimmed, max 40). The email field takes only the part before the @; `@cloudinary.com` is fixed and shown next to it. (Changed 2026-09-28: the employee list was dropped.)
-- 03: camera via `<input type="file" accept="image/*" capture="user">`, plus "Choose from library". Show the photo, then run a face check in the browser (see "Face check"). Next is disabled until a face is found. Retake always available.
-- 04: three cards, nothing preselected, one required.
-- 05: question and 5 chips per type (exact order from the doc) plus "Write your own" (max 18 chars, trimmed, no word filter). Next ("Make my product") disabled until an answer exists. After the first tap, show the live product preview card (see "Label preview"); it swaps art on every tap.
-- 06: copy from the doc with `{first}`, `{answer}`, `{type}` filled in, e.g. "Your Artichoke pizza is in the Cloudinary DAM."
+- 03: before a photo, show only the two capture buttons (no empty photo box), centred on the screen; the preview then appears above them and pushes them down. Camera via `<input type="file" accept="image/*" capture="user">`, plus "Choose from library". Show the photo, then run a face check in the browser (see "Face check"). Once a new photo passes, move on to 04 by itself after about 1 s (no Next; Next only shows when coming Back to a photo that already passed). Retake always available.
+- 04: three cards, nothing preselected, one required. A card tap picks it and moves on to 05 (no Next).
+- 05: question and 5 chips per type (exact order from the doc) plus "Write your own" (max 18 chars, trimmed, no word filter). A chip tap uploads right away (no Next); "Make my product" shows only for "Write your own", as the upload progress, and as Retry. After the first tap, show the live product preview card (see "Label preview"); it swaps art on every tap.
+- 06: copy from the doc with `{first}`, `{answer}`, `{type}` filled in, e.g. "Your Artichoke pizza is in the Cloudinary DAM." Confetti, then that sentence full screen word by word at reading pace (a word every 0.3 s, then held 3 s; tap skips), then a carousel of the two station cards (Everywhere first, the other peeking; one slide-and-back hint), with "Finish either one" at the bottom.
 - Welcome: no privacy or consent footer. Do not add one.
 
 ## Face check and upload (important: unsigned uploads cannot be edited later)
 
 An unsigned upload cannot update an asset's metadata afterwards, so upload ONCE, at "Make my product" on screen 05, with every field filled:
-- On screen 03, check for a face in the browser with MediaPipe Face Detector (tasks-vision, load the model lazily when screen 03 opens). One or more faces = success copy, none = fail copy. If the model fails to load, allow Next (Cloudinary's check below is the backstop).
+- On screen 03, check for a face in the browser with MediaPipe Face Detector (tasks-vision, load the model lazily when screen 03 opens). One or more faces = success copy, none = fail copy. If the model fails to load, move on anyway (Cloudinary's check below is the backstop).
 - Before upload, downscale to max 1600 px long side and re-encode as JPEG quality 0.85 in a canvas (also fixes HEIC and EXIF rotation).
 - POST `multipart/form-data` to `https://api.cloudinary.com/v1_1/${VITE_CLOUD_NAME}/image/upload` with: `file`, `upload_preset`, `public_id` = `{first}-{last}-{4 random a-z0-9}` (lower case, accents stripped, spaces to hyphens), `tags` = `type-{product_type}` (the preset adds `booth-visitor`), and `metadata` as a pipe-separated `key=value` string (escape `=` and `|` in values per the Cloudinary upload API docs):
   `visitor_name`, `first_name`, `email`, `product_type`, `variant`, `favorite`, `face_detected=true`, `tv_status=auto`, `print_status=none`.

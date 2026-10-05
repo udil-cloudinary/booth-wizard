@@ -2,7 +2,7 @@ import { copy, PRODUCT_TYPES, PRODUCTS, type ProductType } from '../content';
 import { state, update } from '../state';
 import { slug } from '../text';
 import { isSurprise } from '../config';
-import { art, CHECK_SVG, h, primary, productArt, stepChrome } from '../ui';
+import { art, CHECK_SVG, h, productArt, stepChrome } from '../ui';
 import type { Go } from './types';
 
 const preloaded = new Set<ProductType>();
@@ -19,19 +19,26 @@ function preloadType(t: ProductType) {
   }
 }
 
+/** How long the picked card's check shows before moving on. */
+const ADVANCE_MS = 250;
+
 export function classic(go: Go): HTMLElement {
-  const next = primary(copy.classic.cta, () => go('favourite'), !state.type);
   if (state.type) preloadType(state.type);
+  let leaving = false;
 
   const cards = PRODUCT_TYPES.map((t) => {
     const p = PRODUCTS[t];
     const input = h('input', { type: 'radio', name: 'type', value: t, id: `type-${t}`, class: 'visually-hidden' });
     input.checked = state.type === t;
-    input.addEventListener('change', () => {
+    // No Next button: a tap picks the type and moves on. `click` also fires when
+    // the card is already picked (coming back from step 05), `change` would not.
+    input.addEventListener('click', () => {
+      if (leaving) return;
+      leaving = true;
       // A new type means a new favourite.
       if (state.type !== t) update({ type: t, favorite: '', ownActive: false, ownText: '' });
       preloadType(t);
-      next.disabled = false;
+      setTimeout(() => input.isConnected && go('favourite'), ADVANCE_MS); // not if Back was tapped meanwhile
     });
     return h(
       'label',
@@ -53,6 +60,5 @@ export function classic(go: Go): HTMLElement {
     h('h1', { tabindex: -1 }, copy.classic.title),
     h('p', { class: 'lead' }, copy.classic.body),
     h('fieldset', { class: 'cards' }, h('legend', { class: 'visually-hidden' }, copy.classic.title), ...cards),
-    h('div', { class: 'actions' }, next),
   );
 }

@@ -12,27 +12,32 @@ Run on a real iPhone (Safari) and a real Android phone (Chrome), portrait. Use `
 - [ ] 02: Next needs both a name and a valid prefix.
 - [ ] 02: a very long name (40 characters): the field stops at 40; later the label shrinks the first name on one line.
 - [ ] 02: a Hebrew name (אודי לי-הוד): accepted; public ID uses the email prefix (`udi-li-hod-xxxx`).
-- [ ] 03: Take a selfie opens the FRONT camera. Photo shows, then "Face found. Looking great, {first}". Next enables.
-- [ ] 03: no face (point at the ceiling): fail copy, Next stays disabled, Retake works.
+- [ ] 03: before a photo, only "Take a selfie" and "Choose from library" show, centred on the screen (also on a small phone, iPhone SE), no empty photo box. After a photo, the preview appears and the buttons move to the bottom.
+- [ ] 03: Take a selfie opens the FRONT camera. Photo shows, then "Face found. Looking great, {first}", then 04 opens by itself after about 1 s. No Next button.
+- [ ] 03: no face (point at the ceiling): fail copy, the app stays on 03, Retake works.
 - [ ] 03: Choose from library: a portrait from the gallery works, including an iPhone HEIC and a rotated photo (shows upright).
 - [ ] 03: Back to 02 and forward again: photo and status kept.
-- [ ] 04: nothing preselected, Next disabled. Pick each card: yellow border and check.
+- [ ] 04: nothing preselected, no Next button. Tapping a card shows its check, then 05 opens. Back from 05, tap the same card: 05 opens again.
+- [ ] 03: Back from 04 to a photo that passed: Next shows and keeps the photo.
 - [ ] 05: every chip of every type (pizza 5, gelato 5, caffè 5) swaps the art to `product-base-{type}-{variant}` and the label line 2.
 - [ ] 05: Write your own: art switches to the own-answer default (margherita, pink gelato, moka pot).
 - [ ] 05: own answer that matches a chip, e.g. "PISTACHIO" or "tiramisu": art becomes that chip's art. In the upload, `variant` = `pistachio` / `tiramisu`, `favorite` = the text exactly as typed.
 - [ ] 05: own answer at 18 characters: input stops at 18, label line shrinks and never wraps.
 - [ ] 05: own answer with `=` or `|` (e.g. `Fig=|x`): upload succeeds and `favorite` in the Media Library shows the characters as typed.
 - [ ] 05: the sticker shows the selfie, face centred.
-- [ ] 05: Make my product: progress fills the button, then 06.
-- [ ] 06: "Grazie, {first}!" and "Your {answer} {type} is in the Cloudinary DAM." with the real values (e.g. "Your Artichoke pizza").
+- [ ] 05: no button until something happens. Tapping a chip starts the upload at once: progress fills the "Make my product" bar, then 06.
+- [ ] 05: Write your own: the button shows, enabled once there is text; the button or Enter uploads.
+- [ ] 06: confetti from both bottom corners; "Grazie, {first}!" and "Your {answer} {type} is in the Cloudinary DAM." fill the screen word by word, slow enough to read along, with the real values (e.g. "Your Artichoke pizza", in the accent), stay about 3 s, then the stations view with no blank frame in between. A tap skips the intro.
+- [ ] 06: the Everywhere card shows first with the Agent card peeking; it slides to Agent and back once by itself; swiping works and stops the hint; the dots follow. "Finish either one", the P.S. and Start over sit at the bottom without scrolling (also on an iPhone SE).
+- [ ] 06: with Reduce Motion on (iOS Settings > Accessibility > Motion): no confetti, no slide hint, the sentence appears at once.
 - [ ] 06: Start over returns to 01 with everything cleared.
 
 ## Resilience
 
 - [ ] Reload on each of 02 to 05: you stay on the same step with your answers (photo included).
-- [ ] Airplane mode, then Make my product: after the error the button reads Retry, answers are kept. Turn the network back on, Retry succeeds.
+- [ ] Airplane mode, then tap a chip: after the error the button reads Retry, answers are kept. Turn the network back on, Retry succeeds.
 - [ ] Very slow network (Chrome DevTools, Slow 3G): upload times out after 30 s and offers Retry.
-- [ ] Face model blocked (DevTools: block `*.tflite`): after about 8 s Next enables anyway.
+- [ ] Face model blocked (DevTools: block `*.tflite`): after about 8 s the app moves on to 04 anyway.
 - [ ] Cloudinary returns no faces (e.g. a library photo of a hand when the model is blocked): back on 03 with the fail copy; the retake is a fresh upload with a new public ID.
 - [ ] VoiceOver / TalkBack: each step announces its heading; chips announce pressed state; the progress bar reads "Step n of 4".
 - [ ] iOS: Settings → Accessibility → Reduce Motion on: no slide or pop animations.
