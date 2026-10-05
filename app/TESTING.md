@@ -12,6 +12,7 @@ Run on a real iPhone (Safari) and a real Android phone (Chrome), portrait. Use `
 - [ ] 02: Next needs both a name and a valid prefix.
 - [ ] 02: a very long name (40 characters): the field stops at 40; later the label shrinks the first name on one line.
 - [ ] 02: a Hebrew name (אודי לי-הוד): accepted; public ID uses the email prefix (`udi-li-hod-xxxx`).
+- [ ] 03: before a photo, only "Take a selfie" and "Choose from library" show, centred on the screen (also on a small phone, iPhone SE), no empty photo box. After a photo, the preview appears and the buttons move to the bottom.
 - [ ] 03: Take a selfie opens the FRONT camera. Photo shows, then "Face found. Looking great, {first}", then 04 opens by itself after about 1 s. No Next button.
 - [ ] 03: no face (point at the ceiling): fail copy, the app stays on 03, Retake works.
 - [ ] 03: Choose from library: a portrait from the gallery works, including an iPhone HEIC and a rotated photo (shows upright).

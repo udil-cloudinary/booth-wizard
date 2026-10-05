@@ -27,17 +27,18 @@ export function pose(go: Go): HTMLElement {
   const libraryInput = h('input', { id: 'lib', type: 'file', accept: 'image/*', class: 'visually-hidden' });
   const cameraLabel = h('label', { for: 'cam', class: 'secondary' });
   const libraryLabel = h('label', { for: 'lib', class: 'link' }, copy.pose.library);
+  const actions = h('div', { class: 'actions' }, h('div', { class: 'capture' }, cameraLabel, libraryLabel), next);
 
   // "unavailable" = the model could not load: let them through, Cloudinary's faces check is the backstop.
   const accepted = () => state.faceStatus === 'found' || state.faceStatus === 'unavailable';
 
   const render = () => {
     const hasPhoto = !!state.photo;
-    photoBox.replaceChildren(
-      hasPhoto
-        ? h('img', { src: state.photo, alt: '', width: state.photoW, height: state.photoH })
-        : h('span', { class: 'photo-empty', 'aria-hidden': 'true', html: CAMERA_SVG.replace(/22/g, '48') }),
-    );
+    // Before a photo, only the two capture buttons show, centred on the screen. The
+    // photo box comes in above them once there is a photo and pushes them down.
+    photoBox.hidden = !hasPhoto;
+    actions.classList.toggle('centered', !hasPhoto);
+    photoBox.replaceChildren(hasPhoto ? h('img', { src: state.photo, alt: '', width: state.photoW, height: state.photoH }) : '');
     photoBox.classList.toggle('found', state.faceStatus === 'found');
     photoBox.classList.toggle('none', state.faceStatus === 'none');
 
@@ -47,6 +48,7 @@ export function pose(go: Go): HTMLElement {
     else if (state.faceStatus === 'none')
       status.replaceChildren(h('p', { class: 'fail-title' }, copy.pose.failTitle), h('p', { class: 'fail-body' }, copy.pose.failBody));
     else status.replaceChildren();
+    status.hidden = !status.childElementCount;
 
     cameraLabel.innerHTML = '';
     cameraLabel.append(h('span', { 'aria-hidden': 'true', html: CAMERA_SVG }), hasPhoto || state.faceStatus === 'none' ? copy.pose.retake : copy.pose.takeSelfie);
@@ -106,6 +108,6 @@ export function pose(go: Go): HTMLElement {
     status,
     cameraInput,
     libraryInput,
-    h('div', { class: 'actions' }, h('div', { class: 'capture' }, cameraLabel, libraryLabel), next),
+    actions,
   );
 }
