@@ -1,5 +1,7 @@
 # Booth wizard: manual tests
 
+Automated regression tests (core logic, step guard, screens 02 and 05 against a mocked upload) run with `npm test`. Everything below is checked by hand.
+
 Run on a real iPhone (Safari) and a real Android phone (Chrome), portrait. Use `npm run dev:mock` for the flow tests, and the real booth cloud for the first-run check at the end. Between runs, tap "Start over" on screen 06.
 
 ## Flow
