@@ -1,11 +1,11 @@
 import { uploadVisitor } from '../cloudinary';
-import { isSurprise } from '../config';
+import { config, isSurprise } from '../config';
 import { copy, OWN_ANSWER, OWN_MAX, PRODUCTS } from '../content';
 import { dataUrlToBlob } from '../image';
 import { createPreview } from '../labelPreview';
 import { state, update } from '../state';
 import { publicIdFor, slug, variantFor } from '../text';
-import { art, h, primary, stepChrome } from '../ui';
+import { art, CHECK_SVG, h, primary, stepChrome } from '../ui';
 import type { Go } from './types';
 
 export function favourite(go: Go): HTMLElement {
@@ -87,6 +87,7 @@ export function favourite(go: Go): HTMLElement {
   const setProgress = (f: number) => {
     bar.style.transform = `scaleX(${f})`;
   };
+  const wait = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
   async function submit() {
     const { favorite, variant } = current();
@@ -94,12 +95,18 @@ export function favourite(go: Go): HTMLElement {
     busy = true;
     next.classList.add('uploading');
     next.setAttribute('aria-busy', 'true');
-    nextLabel.textContent = copy.favourite.cta;
+    nextLabel.textContent = copy.favourite.uploading;
     setProgress(0);
     render();
     const publicId = publicIdFor(state.name, state.emailPrefix);
+    // The bar shows the slower of the real upload and the minimum time, so a
+    // first-time visitor sees something happen even on fast wifi.
+    const started = performance.now();
+    let sent = 0;
+    const tick = () => setProgress(Math.min(sent, (performance.now() - started) / config.minUploadMs));
+    const ticker = setInterval(tick, 100);
     try {
-      const res = await uploadVisitor(
+      const upload = uploadVisitor(
         {
           photo: dataUrlToBlob(state.photo),
           publicId,
@@ -110,8 +117,17 @@ export function favourite(go: Go): HTMLElement {
           variant,
           favorite,
         },
-        setProgress,
-      );
+        (f) => {
+          sent = f;
+          tick();
+        },
+      ).then((r) => {
+        sent = 1; // also when the browser could not report progress
+        return r;
+      });
+      const [res] = await Promise.all([upload, wait(config.minUploadMs)]);
+      clearInterval(ticker);
+      if (!next.isConnected) return;
       if (res.faces && !res.faces.length) {
         // Cloudinary is the backstop: no face, back to the selfie. The retake is a fresh upload.
         // A preset without face detection returns no `faces` at all: then the browser check stands.
@@ -120,8 +136,12 @@ export function favourite(go: Go): HTMLElement {
         return;
       }
       update({ publicId: res.public_id, favorite });
-      go('done');
+      setProgress(1);
+      nextLabel.replaceChildren(h('span', { 'aria-hidden': 'true', html: CHECK_SVG }), copy.favourite.ready);
+      await wait(config.uploadReadyMs);
+      if (next.isConnected) go('done');
     } catch {
+      clearInterval(ticker);
       busy = false;
       failed = true;
       next.classList.remove('uploading');

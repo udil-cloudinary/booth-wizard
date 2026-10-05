@@ -21,4 +21,8 @@ export const config = {
   emailDomain: 'cloudinary.com',
   faceModelTimeoutMs: 8000,
   uploadTimeoutMs: 30000,
+  // Step 05: the progress runs at least this long, however fast the upload is,
+  // then "Your product is ready" holds before the Done screen.
+  minUploadMs: 5000,
+  uploadReadyMs: 2000,
 };

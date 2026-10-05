@@ -23,6 +23,9 @@ const visitor: Partial<State> = {
 async function boot(saved: Partial<State>) {
   sessionStorage.setItem('booth-wizard-v2', JSON.stringify(saved));
   vi.resetModules();
+  // No minimum upload time or "ready" hold: the tests check where the flow ends up.
+  const { config } = await import('./config');
+  Object.assign(config, { minUploadMs: 0, uploadReadyMs: 0 });
   await import('./main');
 }
 
@@ -72,6 +75,27 @@ describe('booth wizard', () => {
 
     await user.click(screen.getByRole('button', { name: 'Pistachio' }));
 
+    expect(await screen.findByRole('heading', { name: 'Grazie, Maya!' })).toBeInTheDocument();
+  });
+
+  it(`GIVEN the visitor is on the favourite step and the upload is faster than the minimum time
+      WHEN they tap a chip
+      THEN the progress shows, then "Your product is ready", then the thank-you screen`, async () => {
+    server.use(
+      http.post(UPLOAD_URL, () =>
+        HttpResponse.json({ public_id: 'booth/visitors/maya-sol-ab12', secure_url: '', faces: [[1, 1, 5, 5]] }),
+      ),
+    );
+    const user = userEvent.setup();
+    await boot({ ...visitor, step: 'favourite' });
+    const { config } = await import('./config');
+    Object.assign(config, { minUploadMs: 400, uploadReadyMs: 400 });
+
+    await user.click(screen.getByRole('button', { name: 'Pistachio' }));
+
+    expect(screen.getByRole('button', { name: 'Making your product…' })).toBeInTheDocument();
+    expect(await screen.findByRole('button', { name: 'Your product is ready' })).toBeInTheDocument();
+    expect(screen.queryByRole('heading', { name: 'Grazie, Maya!' })).not.toBeInTheDocument();
     expect(await screen.findByRole('heading', { name: 'Grazie, Maya!' })).toBeInTheDocument();
   });
 

@@ -9,7 +9,7 @@ const CAMERA_SVG =
   '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>';
 
 /** How long "Face found" shows before moving on to step 04. */
-const ADVANCE_MS = 1200;
+const ADVANCE_MS = 2800;
 
 export function pose(go: Go): HTMLElement {
   preloadFaceDetector();
