@@ -14,8 +14,8 @@ export const config = {
     'https://storage.googleapis.com/mediapipe-models/face_detector/blaze_face_short_range/float16/1/blaze_face_short_range.tflite',
   // Accent theme: yellow (default) or blue (booth backdrop blue). Overridable with ?theme=blue|yellow.
   theme: ((env.VITE_THEME as string) === 'blue' ? 'blue' : 'yellow') as 'yellow' | 'blue',
-  // Variation: surprise (default; no product preview, hero/cards without the label area)
-  // or preview (live product preview on step 05). ?mode=preview|surprise overrides.
+  // Variation: surprise (default since 2026-10-05: no product preview; hero/cards without the
+  // label area) or preview (live product preview on step 05). ?mode=preview|surprise overrides.
   mode: ((env.VITE_MODE as string) === 'preview' ? 'preview' : 'surprise') as 'preview' | 'surprise',
   // Fixed email domain: visitors only type the part before the @.
   emailDomain: 'cloudinary.com',
