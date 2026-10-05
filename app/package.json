@@ -22,5 +22,8 @@
   },
   "dependencies": {
     "@mediapipe/tasks-vision": "^1.0.1"
+  },
+  "allowScripts": {
+    "workerd@1.20261001.1": true
   }
 }
