@@ -53,7 +53,7 @@ export const copy = {
     title: 'Grazie, {first}!',
     // The intro shows `saved` word by word; the stations view then opens with `body`.
     saved: 'Your {answer} {type} is in the Cloudinary DAM.',
-    body: 'Now make it real at one of our stations.',
+    body: 'Now come to the Cloudinary Everywhere booth and make it real, hands on, at one of our two stations.',
     stationsLabel: 'Our stations',
     // Carousel order: Everywhere first.
     stations: [
@@ -68,7 +68,7 @@ export const copy = {
         body: 'Pick Claude or ChatGPT, give it your name, and watch the agent build your magnet with Cloudinary.',
       },
     ],
-    collect: 'Finish either one and collect your magnet + keychain at the counter.',
+    collect: 'Finish either one and collect your magnet + keychain at the booth counter.',
     ps: 'P.S. Keep an eye on the big screen. Your product might just show up.',
     startOver: 'Start over',
   },
