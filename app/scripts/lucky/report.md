@@ -1,0 +1,143 @@
+# Feeling lucky topics: review (2026-10-14, cloud `chrome-demo`)
+
+A topic is kept when its title matches 6+ assets and each section matches 3+ on its own, with the extension's own AND query (the words in [brackets]). Document sections may share at most 20% of their first 24 results.
+
+## ecommerce
+
+- KEEP **Travel backpack**: 9 [travel backpack] e.g. `Weston-super-Mare_backpack__Unsplash_jhpppv`, `The_Photographers_Backpack__Unsplash_boa1gp`, `Trendy_Backpack__Unsplash_ihtu6g`
+  - description: One bag with room for a long trip.
+- KEEP **Vintage car**: 8 [vintage car] e.g. `Yellow_vintage_car__Unsplash_jvczug`, `Vintage_car_headlight.__Unsplash_uado5c`, `Vintage_car_parked_in_Kryvyi_Rih__Unsplash_alvlaa`
+  - description: A restored classic, ready for the road.
+- KEEP **Humpback whale**: 14 [humpback whale] e.g. `Humpback_whale_lunge_feeding__01006_pmzn1n`, `Humpback_whale__Megaptera_novaeangliae__blowing_Eyjafjordur_iu3r9b`, `001_Humpback_whale_breaching_in_Ballena_Marine_National_Park_Photo_by_Giles_Laurent_rozis6`
+  - description: A big puzzle of a whale at sea.
+- KEEP **Northern lights**: 20 [northern lights] e.g. `Th_C3_B3rsm_C3_B6rk_2C_Iceland__Unsplash_8I49k45G-3A_cqrmi0`, `Something_green_in_the_sky__Unsplash_ygld6r`, `Green_and_red_polar_lights__Unsplash_uiddmi`
+  - description: A wall print of green sky over snow.
+- KEEP **Sagrada Familia**: 8 [sagrada familia] e.g. `Sagrada_Familia_March_2015-14a_za1sbz`, `Simetr_C3_ADa_na_Sagrada_Familia._Barcelona_B30_ytrgzv`, `Sagrada_Familia_March_2015-2a_mk73w4`
+  - description: A city poster from Barcelona.
+- KEEP **Machu Picchu**: 6 [machu picchu] e.g. `Machu_Picchu_2C_Aguas_Calientes_2C_Peru__Unsplash_km8tzq`, `Machu_Picchu_Through_Clouds__Unsplash_p7jwhk`, `Machu_Picchu_station_2C_Aguas_Calientes_2C_Peru__Unsplash_4RcFjVc8JLQ_sai3gv`
+  - description: A wall calendar with twelve views of Peru.
+- KEEP **Butterfly flowers**: 12 [butterfly flowers] e.g. `Monarch_butterfly_on_bright_flowers__Unsplash_uwwuwt`, `Orange_butterfly_on_violet_flowers__Unsplash_gimawg`, `Graceful_butterfly_on_flowers__Unsplash_yawesi`
+  - description: Seeds for plants that bring butterflies to your garden.
+- KEEP **Notebook**: 9 [notebook] e.g. `Flatlay_with_a_small_notebook__Unsplash_gb6mpb`, `Pencil_shavings_on_a_notebook__Unsplash_jujzrk`, `Camera_keys_notebook_coffee__Unsplash_qtyrco`
+  - description: Plain pages for notes, plans and lists.
+- KEEP **Camera**: 25 [camera] e.g. `Camera_keys_notebook_coffee__Unsplash_qtyrco`, `Canon_Camera__Unsplash_rbxysc`, `Girl_with_the_Camera__Unsplash_ylca8c`
+  - description: A small camera with a sharp lens.
+- KEEP **Laptop**: 15 [laptop] e.g. `Laptop_and_coffee_on_a_desk_iygmri`, `Laptop_on_a_living_room_table__Unsplash_vaj8cc`, `Man_at_a_laptop_in_an_office__Unsplash_sgkdyc`
+  - description: Light, fast and ready for work.
+- KEEP **New York**: 22 [york] e.g. `Lost_in_the_Sauce__Unsplash_cvj2gq`, `Catch_a_CAB__Unsplash_x9eyqe`, `Monochrome_flatiron_new_york__Unsplash_mpchaq`
+  - description: A city poster in black and white.
+- KEEP **Tel Aviv**: 19 [tel aviv] e.g. `Monument__22The_Tel_Aviv_foundation_22._Tel_Aviv._Israel._07_wdymo4`, `Israel_Tel_Aviv_-_Azrieli_towers_tlijcm`, `Midtown_Tel_Aviv_01_p3louy`
+  - description: A set of ten postcards from the beach city.
+- KEEP **Botanical garden**: 6 [botanical garden] e.g. `Shanghai_Botanical_Garden_2C_China__Unsplash_ga3jnd`, `University_of_Latvia_Botanical_garden_2C_R_C4_ABga_2C_Latvia__Unsplash_msfepv`, `Shanghai_Botanical_Garden_2C_China__Unsplash_Jy6luiLBsrk_evixfs`
+  - description: A wall print of green plants and paths.
+- KEEP **Baking bread**: 15 [baking bread] e.g. `Man_holding_bread__Unsplash_vonnel`, `Lemon_and_lavender_Bread__Unsplash_vctymk`, `Making_Bread__Unsplash_nbrccf`
+  - description: A home kit with flour, yeast and a tin.
+
+## blog
+
+- KEEP **Baking bread**: 15 [baking bread] e.g. `Man_holding_bread__Unsplash_vonnel`, `Lemon_and_lavender_Bread__Unsplash_vctymk`, `Making_Bread__Unsplash_nbrccf`
+  - Fresh bread: Fresh bread is the best thing. → 4 [fresh bread] (alone: fresh 4, bread 15) e.g. `Fresh_Rustic_Bread__Unsplash_jeao9z`, `Fresh_Loaves_of_Bread__Unsplash_som9to`, `Fresh_Bread_and_Butter__Unsplash_ulmnno`
+  - Cake: Make a cake on baking day. → 8 [cake baking] e.g. `Blood_Orange_Chiffon_Cake_with_Mango_Curd__Unsplash_q82lrk`, `Carrot_Cake_Cupcake__Unsplash_sxzt41`, `Holiday_cake__Unsplash_utcibc`
+- KEEP **Home office with a laptop**: 11 [home office laptop] e.g. `Man_at_a_laptop_in_an_office__Unsplash_sgkdyc`, `Typing_on_a_laptop__Unsplash_w4nho1`, `Hands_on_a_laptop_keyboard__Unsplash_iaim3g`
+  - The desk: Keep the laptop on the desk. → 4 [desk laptop] (alone: desk 4, laptop 15) e.g. `Laptop_and_coffee_on_a_desk_iygmri`, `Books_2C_pencils_2C_laptop_2C_and_iphone_on_a_desk__Unsplash_zxaa2k`, `Laptop_on_a_desk__Unsplash_nfthpv`
+  - Workspace: Make your workspace in the office. → 9 [workspace office] e.g. `Workspace_1__Unsplash_gp7mot`, `Notepad_on_a_busy_workspace__Unsplash_pnnax0`, `Workspace_organization__Unsplash_u6jhsf`
+- KEEP **All about Barcelona**: 20 [barcelona] e.g. `Pla_C3_A7a_Sagrada_Fam_C3_ADlia_2C_house_1_to_7_Barcelona_2C_Spain_1_uvjfu0`, `Sagrada_Familia_March_2015-14a_za1sbz`, `Simetr_C3_ADa_na_Sagrada_Familia._Barcelona_B30_ytrgzv`
+  - Sagrada Familia: The Sagrada Familia is in Barcelona. → 8 [sagrada familia barcelona] e.g. `Sagrada_Familia_March_2015-14a_za1sbz`, `Simetr_C3_ADa_na_Sagrada_Familia._Barcelona_B30_ytrgzv`, `Sagrada_Familia_March_2015-2a_mk73w4`
+  - Spain: Barcelona is in Spain. → 4 [spain barcelona] (alone: spain 4, barcelona 20) e.g. `Pla_C3_A7a_Sagrada_Fam_C3_ADlia_2C_house_1_to_7_Barcelona_2C_Spain_1_uvjfu0`, `Barcelona_2C_Spain__Unsplash_oJsRqwMHWHI_zrmqsq`, `Barcelona_2C_Spain__Unsplash_Sx0i1lnwtd8_firzpr`
+- KEEP **Vegan recipes**: 20 [vegan recipes] e.g. `Coffee_Station_2C_Olsztyn_2C_Poland__Unsplash_iQISyMFR0RM_gpahf9`, `Isidor_Emanuel_2016__Unsplash_prcxdn`, `Galaxy_Smoothie_Bowl__Unsplash_w1k0nd`
+  - Smoothie: A vegan smoothie. → 5 [smoothie vegan] (alone: smoothie 5, vegan 20) e.g. `Galaxy_Smoothie_Bowl__Unsplash_w1k0nd`, `Acai_Smoothie_Bowls__Unsplash_ikn69n`, `Smoothie_bowlin__Unsplash_iwfyxv`
+  - Vegetables: Vegan recipes with vegetables. → 5 [vegetables vegan recipes] (alone: vegetables 9, vegan 20, recipes 20) e.g. `Basket_of_Vegetables__Unsplash_yzb53c`, `Spicy_Vegetables__Unsplash_dj8mph`, `Fruits_and_Vegetables__Unsplash_ynqhiq`
+- KEEP **Running for fitness**: 15 [running fitness] e.g. `Guy_running_in_sneakers__Unsplash_nmwxgw`, `Running_down_Mount_Tamalpais_in_gold__Unsplash_qivmda`, `Running_along_the_beach__Unsplash_dz7sfc`
+  - Running: Running is the best fitness. → 15 [running fitness] e.g. `Guy_running_in_sneakers__Unsplash_nmwxgw`, `Running_down_Mount_Tamalpais_in_gold__Unsplash_qivmda`, `Running_along_the_beach__Unsplash_dz7sfc`
+  - The gym: Fitness at the gym. → 3 [gym fitness] (alone: gym 3, fitness 20) e.g. `Gym_Life__Unsplash_cntidw`, `World_Gym_workout__Unsplash_lgrpym`, `The_box_room_at_the_gym_Repeat_Fitness_lxj0tn`
+- KEEP **Camping and a campfire**: 6 [camping campfire] e.g. `Campfire_Cooking__Unsplash_ikslve`, `At_the_campfire__Unsplash_eyqaav`, `Enjoying_the_campfire.__Unsplash_vjsclv`
+  - The tent: Our tent is the best. → 4 [tent] (alone: tent 4) e.g. `Green_tent_on_a_snow_covered_mountain__Unsplash_zqw3pj`, `Tent__Unsplash_cvzn8j`, `A_tent_in_the_snow_at_Stevens_Pass__Unsplash_f25ocf`
+  - Campfire: Then make a campfire for camping. → 6 [campfire camping] e.g. `Campfire_Cooking__Unsplash_ikslve`, `At_the_campfire__Unsplash_eyqaav`, `Enjoying_the_campfire.__Unsplash_vjsclv`
+- KEEP **All about the humpback whale**: 14 [humpback whale] e.g. `Humpback_whale_lunge_feeding__01006_pmzn1n`, `Humpback_whale__Megaptera_novaeangliae__blowing_Eyjafjordur_iu3r9b`, `001_Humpback_whale_breaching_in_Ballena_Marine_National_Park_Photo_by_Giles_Laurent_rozis6`
+  - Humpback: The humpback whale is here. → 14 [humpback whale] e.g. `Humpback_whale_lunge_feeding__01006_pmzn1n`, `Humpback_whale__Megaptera_novaeangliae__blowing_Eyjafjordur_iu3r9b`, `001_Humpback_whale_breaching_in_Ballena_Marine_National_Park_Photo_by_Giles_Laurent_rozis6`
+  - Diving: The whale is diving. → 5 [diving whale] (alone: diving 5, whale 22) e.g. `Humpback_whale__Megaptera_novaeangliae__Eyjafjordur_diving_7_of_27_dycziw`, `Humpback_whale__Megaptera_novaeangliae__Eyjafjordur_diving_3_of_27_gygeme`, `Humpback_whale__Megaptera_novaeangliae__Eyjafjordur_diving_20_of_27_ta5nhh`
+- KEEP **The northern lights**: 20 [northern lights] e.g. `Th_C3_B3rsm_C3_B6rk_2C_Iceland__Unsplash_8I49k45G-3A_cqrmi0`, `Something_green_in_the_sky__Unsplash_ygld6r`, `Green_and_red_polar_lights__Unsplash_uiddmi`
+  - Iceland: The northern lights in Iceland. → 4 [iceland northern lights] (alone: iceland 31, northern 21, lights 25) e.g. `Th_C3_B3rsm_C3_B6rk_2C_Iceland__Unsplash_8I49k45G-3A_cqrmi0`, `Iceland__Unsplash_pziQZlPhVdE_jyrdgy`, `Hamrar_2C_Akureyri_2C_Iceland__Unsplash_cckk8h`
+  - Aurora: The aurora is the northern lights. → 3 [aurora northern lights] (alone: aurora 3, northern 21, lights 25) e.g. `ISS-44_pass_through_Aurora_australis_jkqmwc`, `Aurora_borealis_over_Lapland__Unsplash_zvnmfc`, `Colorful_aurora_borealis__Unsplash_fvk3ge`
+- KEEP **Photography with a camera**: 20 [photography camera] e.g. `Canon_Camera__Unsplash_rbxysc`, `Girl_with_the_Camera__Unsplash_ylca8c`, `Minolta_camera_with_lens__Unsplash_t7j1qd`
+  - Vintage camera: Get a vintage camera. → 4 [vintage camera] (alone: vintage 17, camera 25) e.g. `Silver_vintage_camera__Unsplash_z3z8zi`, `Vintage_camera_1__Unsplash_ecppjx`, `Vintage_Camera__Unsplash_ILavsuI-qdE_fdlxzh`
+  - The camera: The camera is the first thing. → 25 [camera] e.g. `Camera_keys_notebook_coffee__Unsplash_qtyrco`, `Canon_Camera__Unsplash_rbxysc`, `Girl_with_the_Camera__Unsplash_ylca8c`
+- KEEP **Healthy food**: 20 [healthy food] e.g. `Vegetable_Salad__Unsplash_gxaflc`, `Light_Salad_for_Lunch__Unsplash_y0lg0x`, `Healthy_Trendy_Brunch__Unsplash_q0rynn`
+  - Salad: Make a healthy salad. → 4 [salad healthy] (alone: salad 4, healthy 20) e.g. `Vegetable_Salad__Unsplash_gxaflc`, `Light_Salad_for_Lunch__Unsplash_y0lg0x`, `Chicken_and_Egg_Salad__Unsplash_lwbklx`
+  - Breakfast: Get a healthy breakfast. → 3 [breakfast healthy] (alone: breakfast 4, healthy 20) e.g. `Healthy_Breakfast_1__Unsplash_eiicql`, `Healthy_breakfast__Unsplash_vckeos`, `Healthy_Breakfast__Unsplash_w4y8cn`
+- KEEP **Wedding day**: 23 [wedding] e.g. `Wedding_rings__Unsplash_find5a`, `Red_car_at_wedding_in_London__Unsplash_ab9v5f`, `Wedding_Shoes__Choo_Choo___Unsplash_jedkge`
+  - Shoes: Wedding shoes. → 3 [shoes wedding] (alone: shoes 7, wedding 23) e.g. `Wedding_Shoes__Choo_Choo___Unsplash_jedkge`, `Wedding_day_shoes__Unsplash_q60wpc`, `Wedding_shoes__Unsplash_myz3ln`
+  - The wedding: Every wedding is the best day. → 23 [wedding] e.g. `Wedding_rings__Unsplash_find5a`, `Red_car_at_wedding_in_London__Unsplash_ab9v5f`, `Wedding_Shoes__Choo_Choo___Unsplash_jedkge`
+- KEEP **All about books**: 23 [books] e.g. `Enjoying_a_book_with_a_glass_of_wine__Unsplash_jn96wo`, `Books_and_Solitude__Unsplash_kftpic`, `Uppsala_Library__Unsplash_snishb`
+  - Old books: Old books have a story. → 4 [old books] (alone: old 9, books 23) e.g. `Old_books_on_bookshelf.__Unsplash_ys62pf`, `Old_books_on_a_shelf__Unsplash_n54zns`, `Collection_of_old_books__Unsplash_kof3yn`
+  - Books: Books are the best thing. → 23 [books] e.g. `Enjoying_a_book_with_a_glass_of_wine__Unsplash_jn96wo`, `Books_and_Solitude__Unsplash_kftpic`, `Uppsala_Library__Unsplash_snishb`
+- KEEP **All about Tokyo**: 22 [tokyo] e.g. `Bike_in_the_Rain__Unsplash_cs3sqg`, `Sunset_over_Tokyo__Unsplash_euewby`, `Tokyo_2C_Japan__Unsplash_mEaYSkucTys_ztbiml`
+  - Japan: Tokyo is in Japan. → 14 [japan tokyo] e.g. `Tokyo_2C_Japan__Unsplash_mEaYSkucTys_ztbiml`, `Tokyo_Tower_2C_Minato-ku_2C_Japan__Unsplash_nosyys`, `Tokyo_2C_Japan__Unsplash_pTaryUjCPkw_h2tvxu`
+  - Tokyo: Tokyo is the best. → 22 [tokyo] e.g. `Bike_in_the_Rain__Unsplash_cs3sqg`, `Sunset_over_Tokyo__Unsplash_euewby`, `Tokyo_2C_Japan__Unsplash_mEaYSkucTys_ztbiml`
+- KEEP **All about Tel Aviv**: 19 [tel aviv] e.g. `Monument__22The_Tel_Aviv_foundation_22._Tel_Aviv._Israel._07_wdymo4`, `Israel_Tel_Aviv_-_Azrieli_towers_tlijcm`, `Midtown_Tel_Aviv_01_p3louy`
+  - Israel: Tel Aviv is in Israel. → 9 [israel tel aviv] e.g. `Monument__22The_Tel_Aviv_foundation_22._Tel_Aviv._Israel._07_wdymo4`, `Israel_Tel_Aviv_-_Azrieli_towers_tlijcm`, `Jaffa_2C_Tel_Aviv-Yafo_2C_Israel__Unsplash_yjcnwj`
+  - Yafo: Yafo is in Tel Aviv. → 9 [yafo tel aviv] e.g. `Tel_Aviv-Yafo_20140806-IMG_0052_hxrr7q`, `Jaffa_2C_Tel_Aviv-Yafo_2C_Israel__Unsplash_yjcnwj`, `D7_9E_D7_92_D7_93_D7_9C_D7_99__D7_A2_D7_96_D7_A8_D7_99_D7_90_D7_9C_D7_99_2C_Tel_Aviv-Yafo_2C_Israel__Unsplash_vqhu3x`
+- KEEP **Our botanical garden**: 6 [botanical garden] e.g. `Shanghai_Botanical_Garden_2C_China__Unsplash_ga3jnd`, `University_of_Latvia_Botanical_garden_2C_R_C4_ABga_2C_Latvia__Unsplash_msfepv`, `Shanghai_Botanical_Garden_2C_China__Unsplash_Jy6luiLBsrk_evixfs`
+  - Garden: The garden is the best. → 21 [garden] e.g. `Flower_and_Garden_Festival___part_2__Unsplash_h3f1qr`, `Garden_in_a_bucket__Unsplash_lijvwg`, `In_an_Amsterdam_garden__Unsplash_zzojjd`
+  - Botanical garden: A botanical garden is here. → 6 [botanical garden] e.g. `Shanghai_Botanical_Garden_2C_China__Unsplash_ga3jnd`, `University_of_Latvia_Botanical_garden_2C_R_C4_ABga_2C_Latvia__Unsplash_msfepv`, `Shanghai_Botanical_Garden_2C_China__Unsplash_Jy6luiLBsrk_evixfs`
+- KEEP **A new baby**: 17 [baby] e.g. `Autumn_baby_to_be__Unsplash_w9nmke`, `Baby__Unsplash_dgclbe`, `Newborn_Baby__Unsplash_vf9m4m`
+  - Baby: The baby is here. → 17 [baby] e.g. `Autumn_baby_to_be__Unsplash_w9nmke`, `Baby__Unsplash_dgclbe`, `Newborn_Baby__Unsplash_vf9m4m`
+  - Parenting: Parenting a baby. → 17 [parenting baby] e.g. `Autumn_baby_to_be__Unsplash_w9nmke`, `Baby__Unsplash_dgclbe`, `Newborn_Baby__Unsplash_vf9m4m`
+- KEEP **Machu Picchu in Peru**: 6 [machu picchu peru] e.g. `Machu_Picchu_2C_Aguas_Calientes_2C_Peru__Unsplash_km8tzq`, `Machu_Picchu_Through_Clouds__Unsplash_p7jwhk`, `Machu_Picchu_station_2C_Aguas_Calientes_2C_Peru__Unsplash_4RcFjVc8JLQ_sai3gv`
+  - Machu Picchu: Machu Picchu is in Peru. → 6 [machu picchu peru] e.g. `Machu_Picchu_2C_Aguas_Calientes_2C_Peru__Unsplash_km8tzq`, `Machu_Picchu_Through_Clouds__Unsplash_p7jwhk`, `Machu_Picchu_station_2C_Aguas_Calientes_2C_Peru__Unsplash_4RcFjVc8JLQ_sai3gv`
+  - Ruins: The ruins in Peru. → 3 [ruins peru] (alone: ruins 3, peru 20) e.g. `Mountainside_Ruins__Unsplash_hk0q26`, `Ruins_of_Machu_Picchu__Unsplash_vomysi`, `Ruins_of_Machu_Picchu__Unsplash_jpMyAqHat7g_ljvpih`
+- KEEP **Coffee for every day**: 30 [coffee] e.g. `focus-panel-serve-test-coffee`, `Laptop_and_coffee_on_a_desk_iygmri`, `Planning_over_coffee__Unsplash_hetcym`
+  - Coffee: Coffee is the first thing. → 30 [coffee] e.g. `focus-panel-serve-test-coffee`, `Laptop_and_coffee_on_a_desk_iygmri`, `Planning_over_coffee__Unsplash_hetcym`
+  - Coffee day: Every day can be a coffee day. → 30 [coffee] e.g. `focus-panel-serve-test-coffee`, `Laptop_and_coffee_on_a_desk_iygmri`, `Planning_over_coffee__Unsplash_hetcym`
+
+## doc
+
+- KEEP **A trip to Iceland**: 2 [trip iceland] (alone: trip 3, iceland 31) e.g. `Iceland_trip__Unsplash_fexg1o`, `Road_trip_in_Iceland__Unsplash_itazes`
+  - Iceland: We will be in Iceland. → 31 [iceland] e.g. `The_Dyrh_C3_B3laey_lighthouse_Iceland__Unsplash_deoqcg`, `Glacial_folds__Unsplash_gunvav`, `Iceland_trip__Unsplash_fexg1o`
+  - Norway: Then we will be in Norway. → 21 [norway] e.g. `Nordfjordeid_river_sunset__Unsplash_temp0q`, `Lillehammer_2C_Norway__Unsplash_q8dtvd`, `Geirangerfjord_2C_Norway__Unsplash_epjgbi`
+  - Northern lights: The northern lights are here. → 20 [northern lights] e.g. `Th_C3_B3rsm_C3_B6rk_2C_Iceland__Unsplash_8I49k45G-3A_cqrmi0`, `Something_green_in_the_sky__Unsplash_ygld6r`, `Green_and_red_polar_lights__Unsplash_uiddmi`
+- KEEP **Animals at the national park**: 5 [animals national park] (alone: animals 196, national 9, park 10) e.g. `001_Humpback_whale_breaching_in_Ballena_Marine_National_Park_Photo_by_Giles_Laurent_rozis6`, `Addo_Elephant_National_Park_2C_South_Africa__Unsplash_gala5e`, `073_Humpback_whale_tail_in_Ballena_Marine_National_Park_Photo_by_Giles_Laurent_zgbpdm`
+  - Lion: A lion is here. → 20 [lion] e.g. `Lion_friendship__Unsplash_rkqbw4`, `Lion_s_look__Unsplash_l67glt`, `It_happend_in_a_safari_in_Krugger_park__Unsplash_lvtj6n`
+  - Elephant: An elephant is here. → 21 [elephant] e.g. `Elephant_running_vmplys`, `Sri_Lankan_elephant__Elephas_maximus_maximus__female_and_young_6_ekrtvp`, `Jaipur__Unsplash_fszhiu`
+  - Whale: A humpback whale. → 14 [whale humpback] e.g. `Humpback_whale_lunge_feeding__01006_pmzn1n`, `Humpback_whale__Megaptera_novaeangliae__blowing_Eyjafjordur_iu3r9b`, `001_Humpback_whale_breaching_in_Ballena_Marine_National_Park_Photo_by_Giles_Laurent_rozis6`
+- KEEP **Our cities**: 124 [cities] e.g. `Pla_C3_A7a_Sagrada_Fam_C3_ADlia_2C_house_1_to_7_Barcelona_2C_Spain_1_uvjfu0`, `Sagrada_Familia_March_2015-14a_za1sbz`, `Simetr_C3_ADa_na_Sagrada_Familia._Barcelona_B30_ytrgzv`
+  - Barcelona: The Sagrada Familia in Barcelona. → 8 [barcelona sagrada familia] e.g. `Sagrada_Familia_March_2015-14a_za1sbz`, `Simetr_C3_ADa_na_Sagrada_Familia._Barcelona_B30_ytrgzv`, `Sagrada_Familia_March_2015-2a_mk73w4`
+  - Venice: A canal in Venice. → 3 [venice canal] (alone: venice 11, canal 3) e.g. `Red_Venice_canal__Unsplash_o8jjid`, `Quiet_canal_in_Venice__Unsplash_ovw2o3`, `Canal_in_Venice__Unsplash_vnps9p`
+  - New York: We will be in New York. → 22 [york] e.g. `Lost_in_the_Sauce__Unsplash_cvj2gq`, `Catch_a_CAB__Unsplash_x9eyqe`, `Monochrome_flatiron_new_york__Unsplash_mpchaq`
+- KEEP **A day with coffee**: 30 [coffee] e.g. `focus-panel-serve-test-coffee`, `Laptop_and_coffee_on_a_desk_iygmri`, `Planning_over_coffee__Unsplash_hetcym`
+  - Coffee: Coffee is the first thing. → 30 [coffee] e.g. `focus-panel-serve-test-coffee`, `Laptop_and_coffee_on_a_desk_iygmri`, `Planning_over_coffee__Unsplash_hetcym`
+  - Yoga: Then yoga. → 16 [yoga] e.g. `Pilates_01_liawff`, `Paddleboard_yoga_zyw3ga`, `Pool_meditation__Unsplash_anga4g`
+  - Wine: Then wine. → 22 [wine] e.g. `Wine_corks_in_a_basket__Unsplash_dxbulu`, `Vineyard_during_sunset__Unsplash_dhytli`, `Sunset_and_wine__Unsplash_dn8vng`
+- KEEP **Camping in the mountains**: 2 [camping mountains] (alone: camping 23, mountains 38) e.g. `Camping_in_the_mountains__Unsplash_ljkafd`, `Green_tent_on_a_snow_covered_mountain__Unsplash_zqw3pj`
+  - Camping: We will be camping. → 23 [camping] e.g. `Rural_Campgrounds__Unsplash_wfdgnz`, `Camping_in_the_mountains__Unsplash_ljkafd`, `Cooking_While_Camping__Unsplash_oebxlo`
+  - Mountains: There is a mountain here. → 38 [mountains mountain] e.g. `Beautiful_ice_mountains_of_japan__Unsplash_ifhsbu`, `Fog-shrouded_mountain_ridge__Unsplash_ino8o5`, `Waterfall_into_mountain_pond__Unsplash_rk0klv`
+  - Waterfall: There is a waterfall here. → 24 [waterfall] e.g. `Waterfalls_in_Iceland__Unsplash_w6x5gr`, `Spectacular_waterfall__Unsplash_tltzqw`, `Swimming_under_a_waterfall__Unsplash_fu8zhj`
+- KEEP **Animals we have**: 196 [animals] e.g. `Eurasian_eagle-owl__44088_aaabkj`, `Eagle_Owl_IMG_9203_vf6i8q`, `004_Great_horned_owl_under_a_Pink_Ip_C3_AA_tree_in_Encontro_das__C3_81guas_State_Park_Photo_by_Giles_Laurent_euv83o`
+  - Cat: Our cat is here. → 21 [cat] e.g. `Gaspard_the_too_big_cat__Unsplash_k8oq82`, `Hairless_cat_and_a_plant__Unsplash_bezytv`, `Startled_blue-eyed_cat__Unsplash_koseen`
+  - Dog: The dog is out. → 21 [dog] e.g. `Man_and_dog_paddleboarding__Unsplash_uownzf`, `Dog_in_car__Unsplash_ffhze8`, `Dog_on_a_beach__Unsplash_xa6vqf`
+  - Bird: A bird is up there. → 20 [bird] e.g. `Bird_of_Prey__Unsplash_mradok`, `Orange_spotted_bird__Unsplash_dxgh7d`, `Perched_blue_and_orange_bird__Unsplash_2C_crop_oqfomb`
+- KEEP **Morocco and more**: 20 [morocco] e.g. `Babuchas_02_--_2014_--_Marrakech_2C_Marruecos_hpti1c`, `L_C3_A1mparas_2C_Djemaa_el_Fna_--_2014_--_Marrakech_2C_Marruecos_prrs7y`, `Moment_Of_Joy__Unsplash_oxdlob`
+  - Greece: Santorini is in Greece. → 5 [greece santorini] (alone: greece 20, santorini 5) e.g. `Cathedral_Church_of_Saint_John_The_Baptist_2C_Fira_2C_Santorini__2C_Greece__Unsplash_h5ttll`, `Santorini_2C_Greece__Unsplash_OSzlbMcf9Hg_ywtcc7`, `Santorini_2C_Greece__Unsplash_UFd3oTtLEnM_s4gfj5`
+  - Morocco: Marrakech is in Morocco. → 4 [morocco marrakech] (alone: morocco 20, marrakech 4) e.g. `Babuchas_02_--_2014_--_Marrakech_2C_Marruecos_hpti1c`, `L_C3_A1mparas_2C_Djemaa_el_Fna_--_2014_--_Marrakech_2C_Marruecos_prrs7y`, `Oriental_hanging_lanterns._Souk_Haddadine_2C_Marrakech_Medina__D8_B3_D9_88_D9_82__D8_A7_D9_84_D8_AD_D8_AF_D8_A7_D8_AF_D9_8A_D9_86__D9_85_D8_B1_D8_A7_D9_83_D8_B4_nt7o4l`
+  - Desert: Then the desert. → 26 [desert] e.g. `Twilight_Hour_in_the_Desert__Unsplash_vfx4gv`, `Rocky_desert_on_horseback__Unsplash_l2c5fd`, `Lonely_Desert_Hike__Unsplash_jpeosp`
+- KEEP **All about animals**: 196 [animals] e.g. `Eurasian_eagle-owl__44088_aaabkj`, `Eagle_Owl_IMG_9203_vf6i8q`, `004_Great_horned_owl_under_a_Pink_Ip_C3_AA_tree_in_Encontro_das__C3_81guas_State_Park_Photo_by_Giles_Laurent_euv83o`
+  - Fox: A fox in the snow. → 3 [fox snow] (alone: fox 17, snow 10) e.g. `Arctic_fox_sits_in_the_ice_and_snow_in_the_winter_hrjmrw`, `Arctic_fox_in_snow__Unsplash_g0ajc9`, `Red_Fox_in_a_Falling_Snow__Unsplash_qohyzl`
+  - Owl: A burrowing owl. → 4 [owl burrowing] (alone: owl 18, burrowing 4) e.g. `Burrowing_Owl_4212_ucf586`, `Western_burrowing_owl_2C_Glenn_County-0550_za1ak8`, `Burrowing_Owl_4354_njcxnx`
+  - Butterfly: A butterfly on the flowers. → 12 [butterfly flowers] e.g. `Monarch_butterfly_on_bright_flowers__Unsplash_uwwuwt`, `Orange_butterfly_on_violet_flowers__Unsplash_gimawg`, `Graceful_butterfly_on_flowers__Unsplash_yawesi`
+- KEEP **My home office**: 20 [home office] e.g. `Man_at_a_laptop_in_an_office__Unsplash_sgkdyc`, `Typing_on_a_laptop__Unsplash_w4nho1`, `Hands_on_a_laptop_keyboard__Unsplash_iaim3g`
+  - Laptop: The laptop is on. → 15 [laptop] e.g. `Laptop_and_coffee_on_a_desk_iygmri`, `Laptop_on_a_living_room_table__Unsplash_vaj8cc`, `Man_at_a_laptop_in_an_office__Unsplash_sgkdyc`
+  - Notebook: My notebook is here. → 9 [notebook] e.g. `Flatlay_with_a_small_notebook__Unsplash_gb6mpb`, `Pencil_shavings_on_a_notebook__Unsplash_jujzrk`, `Camera_keys_notebook_coffee__Unsplash_qtyrco`
+  - Coffee: Coffee is the first thing. → 30 [coffee] e.g. `focus-panel-serve-test-coffee`, `Laptop_and_coffee_on_a_desk_iygmri`, `Planning_over_coffee__Unsplash_hetcym`
+- KEEP **A week by the sea**: 2 [sea] (alone: sea 2) e.g. `Yoga_by_the_sea__Unsplash_sslmzw`, `samples/sea-turtle`
+  - Beach: A surfer on the beach. → 5 [beach surfer] (alone: beach 33, surfer 7) e.g. `Huntington_Beach_surfer__Unsplash_uwag70`, `Surfer_standing_in_ocean_at_Point_Dume_State_Beach_2C_Malibu__Unsplash_xzdw9y`, `Surfer_on_the_beach_drone_view__Unsplash_pdf1y8`
+  - Whale: A whale is out there. → 22 [whale] e.g. `Humpback_whale_lunge_feeding__01006_pmzn1n`, `Humpback_whale__Megaptera_novaeangliae__blowing_Eyjafjordur_iu3r9b`, `Monkey_Mia_Dolphin_Resort_2C_Monkey_Mia_2C_Australia__Unsplash_5tGiaWu1QQs_csdc5p`
+  - Running: Then we will be running. → 16 [running] e.g. `Elephant_running_vmplys`, `Guy_running_in_sneakers__Unsplash_nmwxgw`, `Running_down_Mount_Tamalpais_in_gold__Unsplash_qivmda`
+- KEEP **A day on the farm**: 2 [farm] (alone: farm 2) e.g. `Farm_Dog_in_the_Rain__Unsplash_cjz9kz`, `Campfire_at_La_Serrana_Eco_Farm_and_Hostel_2C_near_Salento_2C_Qu_C3_ADndio_2C_Colombia__Unsplash_zhvtnw`
+  - Horse: A white horse. → 4 [horse white] (alone: horse 21, white 16) e.g. `Pricked_horse_ears_in_black_and_white__Unsplash_ztjphu`, `Young_woman_on_a_white_horse__Unsplash_a83daz`, `White-striped_horse_in_an_enclosure__Unsplash_fsphib`
+  - Dog: The dog is out. → 21 [dog] e.g. `Man_and_dog_paddleboarding__Unsplash_uownzf`, `Dog_in_car__Unsplash_ffhze8`, `Dog_on_a_beach__Unsplash_xa6vqf`
+  - Garden: The garden is here. → 21 [garden] e.g. `Flower_and_Garden_Festival___part_2__Unsplash_h3f1qr`, `Garden_in_a_bucket__Unsplash_lijvwg`, `In_an_Amsterdam_garden__Unsplash_zzojjd`
+- KEEP **Cities I like**: 124 [cities] e.g. `Pla_C3_A7a_Sagrada_Fam_C3_ADlia_2C_house_1_to_7_Barcelona_2C_Spain_1_uvjfu0`, `Sagrada_Familia_March_2015-14a_za1sbz`, `Simetr_C3_ADa_na_Sagrada_Familia._Barcelona_B30_ytrgzv`
+  - Tokyo: Tokyo is in Japan. → 14 [tokyo japan] e.g. `Tokyo_2C_Japan__Unsplash_mEaYSkucTys_ztbiml`, `Tokyo_Tower_2C_Minato-ku_2C_Japan__Unsplash_nosyys`, `Tokyo_2C_Japan__Unsplash_pTaryUjCPkw_h2tvxu`
+  - London: We will be in London. → 21 [london] e.g. `Millennium_Bridge_at_night__Unsplash_nmft8d`, `Sunday_in_London__Unsplash_dy9fq0`, `Cloudy_London_skyline__Unsplash_qs5zfs`
+  - Paris: Then Paris. → 21 [paris] e.g. `Sunset_2C_Rue_de_Provence_2C_2016_qg80dv`, `The_Pont_Neuf_in_Paris_Illuminated_lmfxcn`, `Ferris_Wheel_in_Paris_2C_France_-_by_tranmautritam__Unsplash_vcxgdj`
+

@@ -199,6 +199,8 @@ async function build(cred) {
       // E-commerce and blog search by the title. Docs search by "heading — first sentence" per section.
       const title = await match(cred, c.title);
       if (path !== 'doc' && title.count < MIN_TOPIC) problems.push(`title matches ${title.count} (needs ${MIN_TOPIC})`);
+      // Docs only propose the title as a search; if the user accepts it, it must not come back empty.
+      if (path === 'doc' && title.count < 1) problems.push('title matches nothing');
       const sections = [];
       for (const s of c.sections ?? []) {
         const m = await match(cred, `${s.heading} — ${s.text}`);

@@ -1,9 +1,666 @@
 {
   "cloud": "chrome-demo",
-  "generatedAt": "",
+  "generatedAt": "2026-10-14T08:24:26.871Z",
   "paths": {
-    "ecommerce": [],
-    "blog": [],
-    "doc": []
+    "ecommerce": [
+      {
+        "id": "travel-backpack",
+        "title": "Travel backpack",
+        "matches": 9,
+        "description": "One bag with room for a long trip."
+      },
+      {
+        "id": "vintage-car",
+        "title": "Vintage car",
+        "matches": 8,
+        "description": "A restored classic, ready for the road."
+      },
+      {
+        "id": "humpback-whale",
+        "title": "Humpback whale",
+        "matches": 14,
+        "description": "A big puzzle of a whale at sea."
+      },
+      {
+        "id": "northern-lights",
+        "title": "Northern lights",
+        "matches": 20,
+        "description": "A wall print of green sky over snow."
+      },
+      {
+        "id": "sagrada-familia",
+        "title": "Sagrada Familia",
+        "matches": 8,
+        "description": "A city poster from Barcelona."
+      },
+      {
+        "id": "machu-picchu",
+        "title": "Machu Picchu",
+        "matches": 6,
+        "description": "A wall calendar with twelve views of Peru."
+      },
+      {
+        "id": "butterfly-flowers",
+        "title": "Butterfly flowers",
+        "matches": 12,
+        "description": "Seeds for plants that bring butterflies to your garden."
+      },
+      {
+        "id": "notebook",
+        "title": "Notebook",
+        "matches": 9,
+        "description": "Plain pages for notes, plans and lists."
+      },
+      {
+        "id": "camera",
+        "title": "Camera",
+        "matches": 25,
+        "description": "A small camera with a sharp lens."
+      },
+      {
+        "id": "laptop",
+        "title": "Laptop",
+        "matches": 15,
+        "description": "Light, fast and ready for work."
+      },
+      {
+        "id": "new-york",
+        "title": "New York",
+        "matches": 22,
+        "description": "A city poster in black and white."
+      },
+      {
+        "id": "tel-aviv",
+        "title": "Tel Aviv",
+        "matches": 19,
+        "description": "A set of ten postcards from the beach city."
+      },
+      {
+        "id": "botanical-garden",
+        "title": "Botanical garden",
+        "matches": 6,
+        "description": "A wall print of green plants and paths."
+      },
+      {
+        "id": "baking-bread",
+        "title": "Baking bread",
+        "matches": 15,
+        "description": "A home kit with flour, yeast and a tin."
+      }
+    ],
+    "blog": [
+      {
+        "id": "baking",
+        "title": "Baking bread",
+        "matches": 15,
+        "sections": [
+          {
+            "heading": "Fresh bread",
+            "text": "Fresh bread is the best thing.",
+            "matches": 4
+          },
+          {
+            "heading": "Cake",
+            "text": "Make a cake on baking day.",
+            "matches": 8
+          }
+        ]
+      },
+      {
+        "id": "home-office",
+        "title": "Home office with a laptop",
+        "matches": 11,
+        "sections": [
+          {
+            "heading": "The desk",
+            "text": "Keep the laptop on the desk.",
+            "matches": 4
+          },
+          {
+            "heading": "Workspace",
+            "text": "Make your workspace in the office.",
+            "matches": 9
+          }
+        ]
+      },
+      {
+        "id": "barcelona",
+        "title": "All about Barcelona",
+        "matches": 20,
+        "sections": [
+          {
+            "heading": "Sagrada Familia",
+            "text": "The Sagrada Familia is in Barcelona.",
+            "matches": 8
+          },
+          {
+            "heading": "Spain",
+            "text": "Barcelona is in Spain.",
+            "matches": 4
+          }
+        ]
+      },
+      {
+        "id": "vegan",
+        "title": "Vegan recipes",
+        "matches": 20,
+        "sections": [
+          {
+            "heading": "Smoothie",
+            "text": "A vegan smoothie.",
+            "matches": 5
+          },
+          {
+            "heading": "Vegetables",
+            "text": "Vegan recipes with vegetables.",
+            "matches": 5
+          }
+        ]
+      },
+      {
+        "id": "fitness",
+        "title": "Running for fitness",
+        "matches": 15,
+        "sections": [
+          {
+            "heading": "Running",
+            "text": "Running is the best fitness.",
+            "matches": 15
+          },
+          {
+            "heading": "The gym",
+            "text": "Fitness at the gym.",
+            "matches": 3
+          }
+        ]
+      },
+      {
+        "id": "camping",
+        "title": "Camping and a campfire",
+        "matches": 6,
+        "sections": [
+          {
+            "heading": "The tent",
+            "text": "Our tent is the best.",
+            "matches": 4
+          },
+          {
+            "heading": "Campfire",
+            "text": "Then make a campfire for camping.",
+            "matches": 6
+          }
+        ]
+      },
+      {
+        "id": "whale",
+        "title": "All about the humpback whale",
+        "matches": 14,
+        "sections": [
+          {
+            "heading": "Humpback",
+            "text": "The humpback whale is here.",
+            "matches": 14
+          },
+          {
+            "heading": "Diving",
+            "text": "The whale is diving.",
+            "matches": 5
+          }
+        ]
+      },
+      {
+        "id": "northern-lights",
+        "title": "The northern lights",
+        "matches": 20,
+        "sections": [
+          {
+            "heading": "Iceland",
+            "text": "The northern lights in Iceland.",
+            "matches": 4
+          },
+          {
+            "heading": "Aurora",
+            "text": "The aurora is the northern lights.",
+            "matches": 3
+          }
+        ]
+      },
+      {
+        "id": "photography",
+        "title": "Photography with a camera",
+        "matches": 20,
+        "sections": [
+          {
+            "heading": "Vintage camera",
+            "text": "Get a vintage camera.",
+            "matches": 4
+          },
+          {
+            "heading": "The camera",
+            "text": "The camera is the first thing.",
+            "matches": 25
+          }
+        ]
+      },
+      {
+        "id": "healthy-food",
+        "title": "Healthy food",
+        "matches": 20,
+        "sections": [
+          {
+            "heading": "Salad",
+            "text": "Make a healthy salad.",
+            "matches": 4
+          },
+          {
+            "heading": "Breakfast",
+            "text": "Get a healthy breakfast.",
+            "matches": 3
+          }
+        ]
+      },
+      {
+        "id": "wedding",
+        "title": "Wedding day",
+        "matches": 23,
+        "sections": [
+          {
+            "heading": "Shoes",
+            "text": "Wedding shoes.",
+            "matches": 3
+          },
+          {
+            "heading": "The wedding",
+            "text": "Every wedding is the best day.",
+            "matches": 23
+          }
+        ]
+      },
+      {
+        "id": "books",
+        "title": "All about books",
+        "matches": 23,
+        "sections": [
+          {
+            "heading": "Old books",
+            "text": "Old books have a story.",
+            "matches": 4
+          },
+          {
+            "heading": "Books",
+            "text": "Books are the best thing.",
+            "matches": 23
+          }
+        ]
+      },
+      {
+        "id": "tokyo",
+        "title": "All about Tokyo",
+        "matches": 22,
+        "sections": [
+          {
+            "heading": "Japan",
+            "text": "Tokyo is in Japan.",
+            "matches": 14
+          },
+          {
+            "heading": "Tokyo",
+            "text": "Tokyo is the best.",
+            "matches": 22
+          }
+        ]
+      },
+      {
+        "id": "tel-aviv",
+        "title": "All about Tel Aviv",
+        "matches": 19,
+        "sections": [
+          {
+            "heading": "Israel",
+            "text": "Tel Aviv is in Israel.",
+            "matches": 9
+          },
+          {
+            "heading": "Yafo",
+            "text": "Yafo is in Tel Aviv.",
+            "matches": 9
+          }
+        ]
+      },
+      {
+        "id": "garden",
+        "title": "Our botanical garden",
+        "matches": 6,
+        "sections": [
+          {
+            "heading": "Garden",
+            "text": "The garden is the best.",
+            "matches": 21
+          },
+          {
+            "heading": "Botanical garden",
+            "text": "A botanical garden is here.",
+            "matches": 6
+          }
+        ]
+      },
+      {
+        "id": "baby",
+        "title": "A new baby",
+        "matches": 17,
+        "sections": [
+          {
+            "heading": "Baby",
+            "text": "The baby is here.",
+            "matches": 17
+          },
+          {
+            "heading": "Parenting",
+            "text": "Parenting a baby.",
+            "matches": 17
+          }
+        ]
+      },
+      {
+        "id": "peru",
+        "title": "Machu Picchu in Peru",
+        "matches": 6,
+        "sections": [
+          {
+            "heading": "Machu Picchu",
+            "text": "Machu Picchu is in Peru.",
+            "matches": 6
+          },
+          {
+            "heading": "Ruins",
+            "text": "The ruins in Peru.",
+            "matches": 3
+          }
+        ]
+      },
+      {
+        "id": "coffee",
+        "title": "Coffee for every day",
+        "matches": 30,
+        "sections": [
+          {
+            "heading": "Coffee",
+            "text": "Coffee is the first thing.",
+            "matches": 30
+          },
+          {
+            "heading": "Coffee day",
+            "text": "Every day can be a coffee day.",
+            "matches": 30
+          }
+        ]
+      }
+    ],
+    "doc": [
+      {
+        "id": "north",
+        "title": "A trip to Iceland",
+        "matches": 63,
+        "sections": [
+          {
+            "heading": "Iceland",
+            "text": "We will be in Iceland.",
+            "matches": 31
+          },
+          {
+            "heading": "Norway",
+            "text": "Then we will be in Norway.",
+            "matches": 21
+          },
+          {
+            "heading": "Northern lights",
+            "text": "The northern lights are here.",
+            "matches": 20
+          }
+        ]
+      },
+      {
+        "id": "safari",
+        "title": "Animals at the national park",
+        "matches": 55,
+        "sections": [
+          {
+            "heading": "Lion",
+            "text": "A lion is here.",
+            "matches": 20
+          },
+          {
+            "heading": "Elephant",
+            "text": "An elephant is here.",
+            "matches": 21
+          },
+          {
+            "heading": "Whale",
+            "text": "A humpback whale.",
+            "matches": 14
+          }
+        ]
+      },
+      {
+        "id": "cities",
+        "title": "Our cities",
+        "matches": 33,
+        "sections": [
+          {
+            "heading": "Barcelona",
+            "text": "The Sagrada Familia in Barcelona.",
+            "matches": 8
+          },
+          {
+            "heading": "Venice",
+            "text": "A canal in Venice.",
+            "matches": 3
+          },
+          {
+            "heading": "New York",
+            "text": "We will be in New York.",
+            "matches": 22
+          }
+        ]
+      },
+      {
+        "id": "day-plan",
+        "title": "A day with coffee",
+        "matches": 62,
+        "sections": [
+          {
+            "heading": "Coffee",
+            "text": "Coffee is the first thing.",
+            "matches": 30
+          },
+          {
+            "heading": "Yoga",
+            "text": "Then yoga.",
+            "matches": 16
+          },
+          {
+            "heading": "Wine",
+            "text": "Then wine.",
+            "matches": 22
+          }
+        ]
+      },
+      {
+        "id": "outdoors",
+        "title": "Camping in the mountains",
+        "matches": 69,
+        "sections": [
+          {
+            "heading": "Camping",
+            "text": "We will be camping.",
+            "matches": 23
+          },
+          {
+            "heading": "Mountains",
+            "text": "There is a mountain here.",
+            "matches": 38
+          },
+          {
+            "heading": "Waterfall",
+            "text": "There is a waterfall here.",
+            "matches": 24
+          }
+        ]
+      },
+      {
+        "id": "pets",
+        "title": "Animals we have",
+        "matches": 62,
+        "sections": [
+          {
+            "heading": "Cat",
+            "text": "Our cat is here.",
+            "matches": 21
+          },
+          {
+            "heading": "Dog",
+            "text": "The dog is out.",
+            "matches": 21
+          },
+          {
+            "heading": "Bird",
+            "text": "A bird is up there.",
+            "matches": 20
+          }
+        ]
+      },
+      {
+        "id": "south",
+        "title": "Morocco and more",
+        "matches": 33,
+        "sections": [
+          {
+            "heading": "Greece",
+            "text": "Santorini is in Greece.",
+            "matches": 5
+          },
+          {
+            "heading": "Morocco",
+            "text": "Marrakech is in Morocco.",
+            "matches": 4
+          },
+          {
+            "heading": "Desert",
+            "text": "Then the desert.",
+            "matches": 26
+          }
+        ]
+      },
+      {
+        "id": "wild",
+        "title": "All about animals",
+        "matches": 19,
+        "sections": [
+          {
+            "heading": "Fox",
+            "text": "A fox in the snow.",
+            "matches": 3
+          },
+          {
+            "heading": "Owl",
+            "text": "A burrowing owl.",
+            "matches": 4
+          },
+          {
+            "heading": "Butterfly",
+            "text": "A butterfly on the flowers.",
+            "matches": 12
+          }
+        ]
+      },
+      {
+        "id": "workday",
+        "title": "My home office",
+        "matches": 46,
+        "sections": [
+          {
+            "heading": "Laptop",
+            "text": "The laptop is on.",
+            "matches": 15
+          },
+          {
+            "heading": "Notebook",
+            "text": "My notebook is here.",
+            "matches": 9
+          },
+          {
+            "heading": "Coffee",
+            "text": "Coffee is the first thing.",
+            "matches": 30
+          }
+        ]
+      },
+      {
+        "id": "coast",
+        "title": "A week by the sea",
+        "matches": 43,
+        "sections": [
+          {
+            "heading": "Beach",
+            "text": "A surfer on the beach.",
+            "matches": 5
+          },
+          {
+            "heading": "Whale",
+            "text": "A whale is out there.",
+            "matches": 22
+          },
+          {
+            "heading": "Running",
+            "text": "Then we will be running.",
+            "matches": 16
+          }
+        ]
+      },
+      {
+        "id": "farm",
+        "title": "A day on the farm",
+        "matches": 46,
+        "sections": [
+          {
+            "heading": "Horse",
+            "text": "A white horse.",
+            "matches": 4
+          },
+          {
+            "heading": "Dog",
+            "text": "The dog is out.",
+            "matches": 21
+          },
+          {
+            "heading": "Garden",
+            "text": "The garden is here.",
+            "matches": 21
+          }
+        ]
+      },
+      {
+        "id": "big-cities",
+        "title": "Cities I like",
+        "matches": 56,
+        "sections": [
+          {
+            "heading": "Tokyo",
+            "text": "Tokyo is in Japan.",
+            "matches": 14
+          },
+          {
+            "heading": "London",
+            "text": "We will be in London.",
+            "matches": 21
+          },
+          {
+            "heading": "Paris",
+            "text": "Then Paris.",
+            "matches": 21
+          }
+        ]
+      }
+    ]
   }
 }
