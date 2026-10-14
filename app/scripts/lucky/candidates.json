@@ -1,0 +1,275 @@
+{
+  "_note": "Topics for /feeling-lucky, written from scripts/lucky/inventory.md. `npm run lucky:topics` keeps only the ones that match chrome-demo (see report.md). The extension ANDs every word that is not a stop word, and in chrome-demo only tags and file names match (not the alt text). So each title, heading and sentence uses a theme word (the asset tag: coffee, camping, whale...) plus at most one partner word from the file names, with only stop words around them (is, the, here, there, then, every, make, get...). Sentence case, no hyphens.",
+  "ecommerce": [
+    { "id": "travel-backpack", "title": "Travel backpack", "description": "One bag with room for a long trip." },
+    { "id": "vintage-car", "title": "Vintage car", "description": "A restored classic, ready for the road." },
+    { "id": "humpback-whale", "title": "Humpback whale", "description": "A big puzzle of a whale at sea." },
+    { "id": "northern-lights", "title": "Northern lights", "description": "A wall print of green sky over snow." },
+    { "id": "sagrada-familia", "title": "Sagrada Familia", "description": "A city poster from Barcelona." },
+    { "id": "machu-picchu", "title": "Machu Picchu", "description": "A wall calendar with twelve views of Peru." },
+    { "id": "butterfly-flowers", "title": "Butterfly flowers", "description": "Seeds for plants that bring butterflies to your garden." },
+    { "id": "notebook", "title": "Notebook", "description": "Plain pages for notes, plans and lists." },
+    { "id": "camera", "title": "Camera", "description": "A small camera with a sharp lens." },
+    { "id": "laptop", "title": "Laptop", "description": "Light, fast and ready for work." },
+    { "id": "new-york", "title": "New York", "description": "A city poster in black and white." },
+    { "id": "tel-aviv", "title": "Tel Aviv", "description": "A set of ten postcards from the beach city." },
+    { "id": "botanical-garden", "title": "Botanical garden", "description": "A wall print of green plants and paths." },
+    { "id": "baking-bread", "title": "Baking bread", "description": "A home kit with flour, yeast and a tin." }
+  ],
+  "blog": [
+    {
+      "id": "baking",
+      "title": "Baking bread",
+      "sections": [
+        { "heading": "Fresh bread", "text": "Fresh bread is the best thing." },
+        { "heading": "Cake", "text": "Make a cake on baking day." }
+      ]
+    },
+    {
+      "id": "home-office",
+      "title": "Home office with a laptop",
+      "sections": [
+        { "heading": "The desk", "text": "Keep the laptop on the desk." },
+        { "heading": "Workspace", "text": "Make your workspace in the office." }
+      ]
+    },
+    {
+      "id": "barcelona",
+      "title": "All about Barcelona",
+      "sections": [
+        { "heading": "Sagrada Familia", "text": "The Sagrada Familia is in Barcelona." },
+        { "heading": "Spain", "text": "Barcelona is in Spain." }
+      ]
+    },
+    {
+      "id": "vegan",
+      "title": "Vegan recipes",
+      "sections": [
+        { "heading": "Smoothie", "text": "A vegan smoothie." },
+        { "heading": "Vegetables", "text": "Vegan recipes with vegetables." }
+      ]
+    },
+    {
+      "id": "fitness",
+      "title": "Running for fitness",
+      "sections": [
+        { "heading": "Running", "text": "Running is the best fitness." },
+        { "heading": "The gym", "text": "Fitness at the gym." }
+      ]
+    },
+    {
+      "id": "camping",
+      "title": "Camping and a campfire",
+      "sections": [
+        { "heading": "The tent", "text": "Our tent is the best." },
+        { "heading": "Campfire", "text": "Then make a campfire for camping." }
+      ]
+    },
+    {
+      "id": "whale",
+      "title": "All about the humpback whale",
+      "sections": [
+        { "heading": "Humpback", "text": "The humpback whale is here." },
+        { "heading": "Diving", "text": "The whale is diving." }
+      ]
+    },
+    {
+      "id": "northern-lights",
+      "title": "The northern lights",
+      "sections": [
+        { "heading": "Iceland", "text": "The northern lights in Iceland." },
+        { "heading": "Aurora", "text": "The aurora is the northern lights." }
+      ]
+    },
+    {
+      "id": "photography",
+      "title": "Photography with a camera",
+      "sections": [
+        { "heading": "Vintage camera", "text": "Get a vintage camera." },
+        { "heading": "The camera", "text": "The camera is the first thing." }
+      ]
+    },
+    {
+      "id": "healthy-food",
+      "title": "Healthy food",
+      "sections": [
+        { "heading": "Salad", "text": "Make a healthy salad." },
+        { "heading": "Breakfast", "text": "Get a healthy breakfast." }
+      ]
+    },
+    {
+      "id": "wedding",
+      "title": "Wedding day",
+      "sections": [
+        { "heading": "Shoes", "text": "Wedding shoes." },
+        { "heading": "The wedding", "text": "Every wedding is the best day." }
+      ]
+    },
+    {
+      "id": "books",
+      "title": "All about books",
+      "sections": [
+        { "heading": "Old books", "text": "Old books have a story." },
+        { "heading": "Books", "text": "Books are the best thing." }
+      ]
+    },
+    {
+      "id": "tokyo",
+      "title": "All about Tokyo",
+      "sections": [
+        { "heading": "Japan", "text": "Tokyo is in Japan." },
+        { "heading": "Tokyo", "text": "Tokyo is the best." }
+      ]
+    },
+    {
+      "id": "tel-aviv",
+      "title": "All about Tel Aviv",
+      "sections": [
+        { "heading": "Israel", "text": "Tel Aviv is in Israel." },
+        { "heading": "Yafo", "text": "Yafo is in Tel Aviv." }
+      ]
+    },
+    {
+      "id": "garden",
+      "title": "Our botanical garden",
+      "sections": [
+        { "heading": "Garden", "text": "The garden is the best." },
+        { "heading": "Botanical garden", "text": "A botanical garden is here." }
+      ]
+    },
+    {
+      "id": "baby",
+      "title": "A new baby",
+      "sections": [
+        { "heading": "Baby", "text": "The baby is here." },
+        { "heading": "Parenting", "text": "Parenting a baby." }
+      ]
+    },
+    {
+      "id": "peru",
+      "title": "Machu Picchu in Peru",
+      "sections": [
+        { "heading": "Machu Picchu", "text": "Machu Picchu is in Peru." },
+        { "heading": "Ruins", "text": "The ruins in Peru." }
+      ]
+    },
+    {
+      "id": "coffee",
+      "title": "Coffee for every day",
+      "sections": [
+        { "heading": "Coffee", "text": "Coffee is the first thing." },
+        { "heading": "Coffee day", "text": "Every day can be a coffee day." }
+      ]
+    }
+  ],
+  "doc": [
+    {
+      "id": "north",
+      "title": "A trip to Iceland",
+      "sections": [
+        { "heading": "Iceland", "text": "We will be in Iceland." },
+        { "heading": "Norway", "text": "Then we will be in Norway." },
+        { "heading": "Northern lights", "text": "The northern lights are here." }
+      ]
+    },
+    {
+      "id": "safari",
+      "title": "Animals at the national park",
+      "sections": [
+        { "heading": "Lion", "text": "A lion is here." },
+        { "heading": "Elephant", "text": "An elephant is here." },
+        { "heading": "Whale", "text": "A humpback whale." }
+      ]
+    },
+    {
+      "id": "cities",
+      "title": "Our cities",
+      "sections": [
+        { "heading": "Barcelona", "text": "The Sagrada Familia in Barcelona." },
+        { "heading": "Venice", "text": "A canal in Venice." },
+        { "heading": "New York", "text": "We will be in New York." }
+      ]
+    },
+    {
+      "id": "day-plan",
+      "title": "A day with coffee",
+      "sections": [
+        { "heading": "Coffee", "text": "Coffee is the first thing." },
+        { "heading": "Yoga", "text": "Then yoga." },
+        { "heading": "Wine", "text": "Then wine." }
+      ]
+    },
+    {
+      "id": "outdoors",
+      "title": "Camping in the mountains",
+      "sections": [
+        { "heading": "Camping", "text": "We will be camping." },
+        { "heading": "Mountains", "text": "There is a mountain here." },
+        { "heading": "Waterfall", "text": "There is a waterfall here." }
+      ]
+    },
+    {
+      "id": "pets",
+      "title": "Animals we have",
+      "sections": [
+        { "heading": "Cat", "text": "Our cat is here." },
+        { "heading": "Dog", "text": "The dog is out." },
+        { "heading": "Bird", "text": "A bird is up there." }
+      ]
+    },
+    {
+      "id": "south",
+      "title": "Morocco and more",
+      "sections": [
+        { "heading": "Greece", "text": "Santorini is in Greece." },
+        { "heading": "Morocco", "text": "Marrakech is in Morocco." },
+        { "heading": "Desert", "text": "Then the desert." }
+      ]
+    },
+    {
+      "id": "wild",
+      "title": "All about animals",
+      "sections": [
+        { "heading": "Fox", "text": "A fox in the snow." },
+        { "heading": "Owl", "text": "A burrowing owl." },
+        { "heading": "Butterfly", "text": "A butterfly on the flowers." }
+      ]
+    },
+    {
+      "id": "workday",
+      "title": "My home office",
+      "sections": [
+        { "heading": "Laptop", "text": "The laptop is on." },
+        { "heading": "Notebook", "text": "My notebook is here." },
+        { "heading": "Coffee", "text": "Coffee is the first thing." }
+      ]
+    },
+    {
+      "id": "coast",
+      "title": "A week by the sea",
+      "sections": [
+        { "heading": "Beach", "text": "A surfer on the beach." },
+        { "heading": "Whale", "text": "A whale is out there." },
+        { "heading": "Running", "text": "Then we will be running." }
+      ]
+    },
+    {
+      "id": "farm",
+      "title": "A day on the farm",
+      "sections": [
+        { "heading": "Horse", "text": "A white horse." },
+        { "heading": "Dog", "text": "The dog is out." },
+        { "heading": "Garden", "text": "The garden is here." }
+      ]
+    },
+    {
+      "id": "big-cities",
+      "title": "Cities I like",
+      "sections": [
+        { "heading": "Tokyo", "text": "Tokyo is in Japan." },
+        { "heading": "London", "text": "We will be in London." },
+        { "heading": "Paris", "text": "Then Paris." }
+      ]
+    }
+  ]
+}

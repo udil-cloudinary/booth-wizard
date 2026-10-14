@@ -72,6 +72,20 @@ A Worker that only serves `dist/` as static assets (Cloudflare has folded Pages 
 - Import the repo, Root Directory `products/booth-wizard/app`, framework preset Vite (build `npm run build`, output `dist`). Add the `VITE_*` variables in Project Settings → Environment Variables.
 - Or: `npx vercel --prod` from this folder.
 
+## /feeling-lucky (Chrome extension test ideas)
+
+A second page, separate from the wizard: someone testing the Cloudinary Chrome extension on a laptop opens `/feeling-lucky/` ("Need a topic?") on their phone, taps one of 3 tiles: E-commerce (Shopify), Blog post (WordPress / Contentful) or Document (Google Docs), and lands on `#ecommerce`, `#blog` or `#doc` with a random idea to type, spun like a slot machine. Back (the button or the phone's own) returns to the tiles. Every idea's words match images in the `chrome-demo` cloud, so the extension never shows "Nothing matched".
+
+The ideas are a static file, `src/lucky/topics.json`, built from the cloud with the Search API (Admin API key and secret in the shell only, never in the bundle):
+
+```sh
+export CLOUDINARY_URL=cloudinary://<api_key>:<api_secret>@chrome-demo
+npm run lucky:inventory   # scripts/lucky/inventory.md: the cloud's words grouped by folder
+npm run lucky:topics      # checks scripts/lucky/candidates.json, writes topics.json + scripts/lucky/report.md
+```
+
+`scripts/lucky/extensionQuery.mjs` copies the extension's own tokenizer and AND query (stop words, first 6 terms, tags / context / file name / display name / public ID; folders are not searched). A topic is kept when its title matches 6+ assets and each section 3+; document sections must also return different images. Edit `candidates.json`, run again, review `report.md` and the JSON diff, then commit.
+
 ## Code map
 
 | File | What |

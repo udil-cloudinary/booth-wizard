@@ -12,3 +12,5 @@
   Cache-Control: no-cache
 /index.html
   Cache-Control: no-cache
+/feeling-lucky/*
+  Cache-Control: no-cache

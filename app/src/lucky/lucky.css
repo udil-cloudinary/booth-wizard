@@ -1,0 +1,401 @@
+/* /feeling-lucky: one portrait screen, no scrolling. --k scales the result's text to fit. */
+
+.lucky {
+  --k: 1;
+  max-width: 480px;
+  height: 100vh;
+  height: 100dvh;
+  margin: 0 auto;
+  padding: calc(env(safe-area-inset-top) + 10px) 16px calc(env(safe-area-inset-bottom) + 14px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.lucky [hidden] {
+  display: none !important;
+}
+
+.home,
+.topic {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  animation: enter 0.25s ease-out;
+}
+
+/* ---------- Categories: 3 tiles share the whole screen ---------- */
+
+.lucky-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.lucky-top img {
+  width: 36px;
+  height: 36px;
+}
+
+.lucky-top h1 {
+  margin: 4px 0;
+  font-size: 30px;
+}
+
+.lucky-top h1 em,
+.cat-title {
+  color: var(--accent);
+}
+
+.paths {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.path {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 16px 16px 22px;
+  border: 1.5px solid var(--line);
+  border-radius: 24px;
+  background: linear-gradient(135deg, var(--surface-on) 0%, var(--surface) 70%);
+  color: var(--text);
+  text-decoration: none;
+  overflow: hidden;
+  transition: transform 0.12s ease-out, border-color 0.12s;
+}
+
+.path:active {
+  transform: scale(0.98);
+  border-color: var(--accent);
+}
+
+.path-text {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.path-label {
+  font-size: 30px;
+  line-height: 1.1;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.path-app {
+  color: var(--text-2);
+  font-family: var(--small);
+  font-size: 17px;
+  font-weight: 400;
+}
+
+.path-art {
+  flex: none;
+  height: 100%;
+  max-height: 136px;
+  max-width: 38%;
+  aspect-ratio: 1;
+}
+
+.path-art svg {
+  width: 100%;
+  height: 100%;
+  stroke-width: 3.5;
+  filter: drop-shadow(0 10px 14px rgba(0, 0, 0, 0.35));
+}
+
+.path:nth-child(1) .path-art svg {
+  transform: rotate(-6deg);
+}
+
+.path:nth-child(3) .path-art svg {
+  transform: rotate(5deg);
+}
+
+.path-art .f {
+  fill: var(--bg-mid);
+  stroke: var(--line);
+}
+
+.path-art .s {
+  stroke: var(--text-2);
+}
+
+.path-art .s-dot {
+  fill: var(--line);
+}
+
+.path-art .a {
+  fill: var(--accent);
+}
+
+.path-art .al {
+  stroke: var(--accent);
+  stroke-width: 5;
+}
+
+.path-art .hole {
+  fill: var(--bg-mid);
+}
+
+.path-art .ink,
+.path-art .ink-on-a {
+  stroke: var(--on-accent);
+  stroke-width: 3;
+}
+
+.path-art .cursor {
+  stroke-width: 3;
+  animation: blink 1.1s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* ---------- Topic page ---------- */
+
+.topic-top {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.cat-title {
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.cat-title span {
+  color: var(--text-2);
+  font-family: var(--small);
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.stage {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.result {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--k) * 10px);
+}
+
+.slot-label,
+.deal-label {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.slot {
+  position: relative;
+  margin: 0;
+  padding: 0 16px;
+  border: 2px solid var(--accent);
+  border-radius: 18px;
+  background: var(--surface);
+  font-size: calc(var(--k) * 32px);
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  overflow: hidden;
+}
+
+/* Always two lines tall, so the reel and the landed title are the same box. */
+.title-box,
+.reel-item {
+  display: flex;
+  align-items: center;
+}
+
+.title-box {
+  position: relative;
+  height: calc(2 * 1.15em + 20px);
+}
+
+.title-text,
+.reel-item > span {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.slot.rolling .title-text {
+  visibility: hidden;
+}
+
+.reel {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.reel-strip {
+  display: block;
+  will-change: transform;
+}
+
+.reel-item {
+  height: var(--h);
+}
+
+/* Drum shading at the top and bottom of the window while it spins. */
+.slot::before,
+.slot::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  height: 30%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+
+.slot::before {
+  top: 0;
+  background: linear-gradient(var(--surface), transparent);
+}
+
+.slot::after {
+  bottom: 0;
+  background: linear-gradient(transparent, var(--surface));
+}
+
+.slot.rolling::before,
+.slot.rolling::after {
+  opacity: 1;
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--k) * 10px);
+}
+
+.deal {
+  padding: calc(var(--k) * 12px) 16px;
+  border-left: 4px solid var(--accent);
+  border-radius: 14px;
+  background: var(--surface-on);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+}
+
+.deal-head {
+  margin: 0 0 calc(var(--k) * 4px);
+  color: var(--accent);
+  font-size: calc(var(--k) * 24px);
+  line-height: 1.15;
+  font-weight: 700;
+}
+
+.deal-label {
+  margin-bottom: 4px;
+}
+
+.deal-text {
+  margin: 0;
+  font-family: var(--small);
+  font-size: calc(var(--k) * 21px);
+  line-height: 1.3;
+  font-weight: 500;
+}
+
+/* ---------- Footer: where to type it, and a big Spin again ---------- */
+
+.lucky-foot {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.where {
+  margin: 0;
+  color: var(--text);
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.lucky .spin {
+  height: clamp(84px, 14vh, 112px);
+  height: clamp(84px, 14dvh, 112px);
+  border-radius: 24px;
+  font-size: 30px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+  transition: transform 0.12s ease-out;
+}
+
+.lucky .spin .label {
+  gap: 12px;
+}
+
+.lucky .spin svg {
+  display: block;
+}
+
+.lucky .spin:active {
+  transform: scale(0.97);
+}
+
+.spinning .spin {
+  opacity: 0.6;
+}
+
+.spinning .spin svg {
+  animation: turn 0.6s linear infinite;
+}
+
+@keyframes turn {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.shake-hint {
+  display: none;
+  margin: 0;
+  color: var(--muted);
+  font-family: var(--small);
+  font-size: 14px;
+  text-align: center;
+}
+
+.can-shake .shake-hint {
+  display: block;
+}
+
+@media (max-height: 640px) {
+  .path-label {
+    font-size: 26px;
+  }
+  .where {
+    font-size: 16px;
+  }
+}
