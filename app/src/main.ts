@@ -4,6 +4,7 @@ import { classic } from './screens/classic';
 import { done } from './screens/done';
 import { favourite } from './screens/favourite';
 import { pose } from './screens/pose';
+import { fromUrlOrSession } from './prefs';
 import type { Go } from './screens/types';
 import { who } from './screens/who';
 import { welcome } from './screens/welcome';
@@ -26,20 +27,6 @@ function guard(step: Step): Step {
   return step;
 }
 
-/**
- * ?theme=blue|yellow and ?mode=preview|surprise pick the accent and the variation
- * for this session (kept across reloads and "Start over"); otherwise the build's env.
- */
-function fromUrlOrSession(param: string, allowed: string[], fallback: string): string {
-  const key = `booth-wizard-${param}`;
-  try {
-    const q = new URLSearchParams(location.search).get(param);
-    if (q && allowed.includes(q)) sessionStorage.setItem(key, q);
-    return sessionStorage.getItem(key) || fallback;
-  } catch {
-    return fallback;
-  }
-}
 document.documentElement.dataset.theme = fromUrlOrSession('theme', ['yellow', 'blue'], config.theme);
 document.documentElement.dataset.mode = fromUrlOrSession('mode', ['preview', 'surprise'], config.mode);
 

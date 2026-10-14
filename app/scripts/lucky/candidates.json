@@ -1,0 +1,110 @@
+{
+  "_note": "Drafts for /feeling-lucky. `npm run lucky:topics` keeps only the ones that match chrome-demo (see report.md). Every word that is not a stop word must be on the same asset (the extension ANDs them), so use 1-2 concrete nouns per title, heading and sentence, in sentence case, with no hyphens.",
+  "ecommerce": [
+    { "id": "wool-coat", "title": "Pink wool coat", "description": "A warm coat for cold days in town." },
+    { "id": "analog-watch", "title": "Analog watch", "description": "A clean face with a leather strap." },
+    { "id": "travel-bag", "title": "Travel bag", "description": "One bag with room for all you need." },
+    { "id": "coffee-beans", "title": "Coffee beans", "description": "Dark roast, from farm to your cup." },
+    { "id": "yoga-mat", "title": "Yoga mat", "description": "Soft, light and easy to roll up." },
+    { "id": "camping-tent", "title": "Camping tent", "description": "Fits two people and goes up in minutes." },
+    { "id": "red-wine", "title": "Red wine", "description": "A smooth red to share with friends." },
+    { "id": "sourdough-bread", "title": "Sourdough bread", "description": "Baked fresh each morning with a crisp crust." }
+  ],
+  "blog": [
+    {
+      "id": "coffee-at-home",
+      "title": "Coffee at home",
+      "sections": [
+        { "heading": "Latte art", "text": "Pour the milk slowly to draw a heart." },
+        { "heading": "Coffee beans", "text": "Keep your coffee beans in a dark jar." }
+      ]
+    },
+    {
+      "id": "night-under-tent",
+      "title": "A night of camping",
+      "sections": [
+        { "heading": "The tent", "text": "Set up the tent before it gets dark." },
+        { "heading": "Campfire", "text": "A campfire keeps you warm all night." }
+      ]
+    },
+    {
+      "id": "yoga-mornings",
+      "title": "Yoga in the morning",
+      "sections": [
+        { "heading": "Yoga mat", "text": "Roll out your yoga mat by the window." },
+        { "heading": "Stretch", "text": "Start with a slow stretch for your back." }
+      ]
+    },
+    {
+      "id": "bake-sourdough",
+      "title": "Bake your own sourdough",
+      "sections": [
+        { "heading": "Sourdough", "text": "Feed the sourdough starter the night before." },
+        { "heading": "Bread", "text": "Bake the bread until the crust is dark." }
+      ]
+    },
+    {
+      "id": "wine-tasting",
+      "title": "Wine for beginners",
+      "sections": [
+        { "heading": "Vineyard", "text": "Walk the vineyard rows at harvest time." },
+        { "heading": "Wine glass", "text": "Hold the wine glass by the stem." }
+      ]
+    },
+    {
+      "id": "garden-spring",
+      "title": "A garden in spring",
+      "sections": [
+        { "heading": "Flowers", "text": "Plant the flowers where they get sun." },
+        { "heading": "Garden", "text": "Water the garden early in the morning." }
+      ]
+    }
+  ],
+  "doc": [
+    {
+      "id": "trip-north",
+      "title": "Our trip to the north",
+      "sections": [
+        { "heading": "Iceland", "text": "We land in Iceland first." },
+        { "heading": "Norway", "text": "Then we get to Norway." },
+        { "heading": "Northern lights", "text": "At night we watch the northern lights." }
+      ]
+    },
+    {
+      "id": "two-cities",
+      "title": "Two cities in a week",
+      "sections": [
+        { "heading": "Barcelona", "text": "We start in Barcelona." },
+        { "heading": "Tokyo", "text": "Then we fly to Tokyo." },
+        { "heading": "Desert", "text": "We end the trip in the desert." }
+      ]
+    },
+    {
+      "id": "wild-animals",
+      "title": "Wild animals to look for",
+      "sections": [
+        { "heading": "Fox", "text": "A red fox in the snow." },
+        { "heading": "Whale", "text": "A whale off the coast." },
+        { "heading": "Owl", "text": "An owl in the trees at night." }
+      ]
+    },
+    {
+      "id": "weekend-plan",
+      "title": "Plan for the weekend",
+      "sections": [
+        { "heading": "Coffee", "text": "Start the day with a coffee." },
+        { "heading": "Yoga", "text": "Then an hour of yoga." },
+        { "heading": "Wine", "text": "End the day with a glass of wine." }
+      ]
+    },
+    {
+      "id": "camping-list",
+      "title": "Camping list",
+      "sections": [
+        { "heading": "Tent", "text": "Pack the tent and the poles." },
+        { "heading": "Campfire", "text": "Bring wood for the campfire." },
+        { "heading": "Mountains", "text": "Walk to the top of the mountains." }
+      ]
+    }
+  ]
+}

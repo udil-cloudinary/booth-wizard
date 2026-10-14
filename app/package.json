@@ -13,7 +13,9 @@
     "art": "sh scripts/build-art.sh",
     "postinstall": "node scripts/copy-mediapipe.mjs",
     "fetch-model": "curl -fL -o public/mediapipe/blaze_face_short_range.tflite https://storage.googleapis.com/mediapipe-models/face_detector/blaze_face_short_range/float16/1/blaze_face_short_range.tflite",
-    "test": "vitest run"
+    "test": "vitest run",
+    "lucky:inventory": "node scripts/lucky-topics.mjs inventory",
+    "lucky:topics": "node scripts/lucky-topics.mjs"
   },
   "devDependencies": {
     "@testing-library/dom": "^10.4.2",

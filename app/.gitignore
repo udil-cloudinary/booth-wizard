@@ -4,3 +4,4 @@ dist
 .env.local
 public/mediapipe/wasm
 .wrangler
+scripts/lucky/inventory.json
